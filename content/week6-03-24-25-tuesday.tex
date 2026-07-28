@@ -668,20 +668,45 @@ Genau, das ist die Grundidee. Das Problem ist halt mit den negativen Zahlen. Wen
 \end{student-interaction}
 
 \begin{math-stroke}[Das additive Inverse]
-\begin{definition}[Additives Inverses]\label{def:additives-inverses}
-Für einen Dedekindschen Schnitt $\alpha \in \mathbb{R}$ definieren wir das \newterm{additive Inverse} $-\alpha$ durch:
+\begin{definition}[Additives Inverses --- Naiver vs. korrekter Ansatz]\label{def:additives-inverses}
+Der naive Ansatz zur Spiegelung eines Dedekindschen Schnitts $\alpha \in \mathbb{R}$,
+\begin{equation}
+\label{eq:additives-inverses-naive}
+\textcolor{red}{-\alpha_{\text{naiv}} := \{ p \in \mathbb{Q} \mid \forall q \in \alpha \colon q + p < 0 \}} \quad \text{(\textcolor{red}{fehlerhaft für rationale Schnitte!})}
+\end{equation}
+erzeugt bei rationalen Schnitten ein maximales Element und verletzt damit Axiom \textbf{(D2)}.
+
+Die präzise und korrekte Definition des \newterm{additiven Inversen} $-\alpha$ lautet:
 \begin{equation}
 \label{eq:additives-inverses-def}
--\alpha := \{ p \in \mathbb{Q} \mid \exists r \in \mathbb{Q}, r > 0 \colon -p - r \notin \alpha \}
+-\alpha := \{ p \in \mathbb{Q} \mid \exists r \notin \alpha \colon p < -r \}
 \end{equation}
-Alternativ lässt sich dies charakterisieren als:
-\[ -\alpha = \{ p \in \mathbb{Q} \mid \exists r \in \mathbb{Q}, r > 0 \; \forall q \in \alpha \colon q + p \le -r < 0 \} \]
 \end{definition}
 
 \begin{explanation-of-steps}
-Die Definition stellt sicher, dass $-\alpha$ wieder ein Dedekindscher Schnitt ist. Insbesondere sorgt das $r > 0$ dafür, dass die Menge kein maximales Element besitzt (\textbf{(D2)}). Mit dieser Definition gilt $\alpha + (-\alpha) = 0_{\mathbb{R}}$.
+\textbf{Warum schlägt der naive Ansatz fehl?} Ist $\alpha = \alpha_s = \{q \in \mathbb{Q} \mid q < s\}$ ein rationaler Schnitt (z.\,B. $s = 1$), so würde $-s$ in $-\alpha_{\text{naiv}}$ liegen, da für alle $q < s$ gilt $q + (-s) < 0$. Damit wäre $-s$ ein größtes Element in $-\alpha_{\text{naiv}}$, was \textbf{(D2)} widerspricht. Die Bedingung $p < -r$ für ein $r \notin \alpha$ schließt das Maximum $-s$ strikt aus.
 \end{explanation-of-steps}
 \end{math-stroke}
+
+\begin{ai-note}[Didaktische Analyse: Die Tücke beim Negativen eines Dedekind-Schnitts]
+\textbf{Problem im naiven Ansatz:}
+In der Vorlesung entsteht leicht die Idee, $-\alpha$ einfach durch $\{p \in \mathbb{Q} \mid \forall q \in \alpha \colon q + p < 0\}$ zu definieren.
+
+\textbf{Mathematische Ursache des Fehlers:}
+Betrachten wir den rationalen Schnitt $\alpha_s = \{q \in \mathbb{Q} \mid q < s\}$ für eine rationale Zahl $s \in \mathbb{Q}$:
+\begin{itemize}
+    \item Für $p = -s$ gilt für jedes $q \in \alpha$: $q + (-s) < s - s = 0$.
+    \item Damit läge $-s$ in $-\alpha_{\text{naiv}}$, und $-s$ wäre das \emph{maximale Element} dieser Menge.
+    \item Ein Dedekindscher Schnitt darf jedoch nach Axiom \textbf{(D2)} **kein maximales Element** besitzen!
+\end{itemize}
+
+\textbf{Die elegante Korrektur:}
+Indem man Elemente $r \notin \alpha$ aus dem Komplement wählt und $p < -r$ fordert, wird die obere Grenze $-s$ strikt ausgeschlossen:
+\[
+-\alpha := \{ p \in \mathbb{Q} \mid \exists r \notin \alpha \colon p < -r \}
+\]
+Dies garantiert, dass $-\alpha$ nach unten abgeschlossen ist und kein größtes Element besitzt.
+\end{ai-note}
 
 \subsection{Die Ordnung auf den reellen Zahlen}
 \begin{math-stroke}
