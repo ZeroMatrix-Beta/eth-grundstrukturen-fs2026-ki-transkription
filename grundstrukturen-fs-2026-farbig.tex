@@ -206,8 +206,8 @@ bookmarksopen=true
 % --- CLEAN SHADOW BREAKS & SPACING ---
 \tcbset{
   every box/.append style={
-    before skip=8pt plus 2pt minus 2pt, 
-    after skip=8pt plus 2pt minus 2pt,  
+    before skip=10pt plus 3pt minus 2pt, 
+    after skip=10pt plus 3pt minus 2pt,  
     underlay first={
       \fill[white] ([xshift=-15pt,yshift=0pt]frame.south west) rectangle ([xshift=15pt,yshift=-15pt]frame.south east);
     },
@@ -230,13 +230,13 @@ bookmarksopen=true
 \setlength{\standardparindent}{17pt} 
 
 \newlength{\customparskip}
-\setlength{\customparskip}{3pt plus 1.5pt minus 0.5pt}
+\setlength{\customparskip}{4pt plus 2pt minus 1pt}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{\customparskip}
 
 \newlength{\customenvspace}
-\setlength{\customenvspace}{2.0ex plus 0.5ex minus 0.2ex}
+\setlength{\customenvspace}{2.5ex plus 0.5ex minus 0.2ex}
 
 % Inline-Mathe "Atemluft" 
 \setlength{\mathsurround}{1pt}
@@ -774,7 +774,7 @@ breakable
 
 % SHORT PROOF 
 \newenvironment{short-proof}[1][Beweis]{
-    \par\if@nobreak\vspace{-1ex}\else\addvspace{1.2ex plus 0.3ex minus 0.2ex}\fi
+    \par\if@nobreak\vspace{-1ex}\else\addvspace{1.5ex plus 0.3ex minus 0.2ex}\fi
     \insideprooftrue 
     \noindent\textcolor{ProofTint}{\faPenNib}\hspace{0.5em}%
     {\normalfont\sffamily\bfseries\color{ProofTint}#1}%
@@ -788,7 +788,7 @@ breakable
 
 % LONG PROOF 
 \renewenvironment{proof}[1][Beweis]{
-    \par\if@nobreak\vspace{-1ex}\else\addvspace{1.8ex plus 0.5ex minus 0.2ex}\fi
+    \par\if@nobreak\vspace{-1ex}\else\addvspace{2.2ex plus 0.5ex minus 0.2ex}\fi
     \insideprooftrue 
     \noindent\makebox[0pt][r]{\textcolor{ProofTint}{\faPenNib}\hspace{10pt}}%
     {\normalfont\sffamily\large\bfseries\color{ProofTint}#1}%

@@ -323,8 +323,8 @@ Wir beweisen die Kontraposition beider Richtungen:
 \end{short-proof}
 
 \begin{remark}[Ex Falso Quodlibet]
-In einer Übung wurde gezeigt, dass für alle Formeln $\psi$ und $\chi$ gilt:
-\[ \vdash (\psi \land \neg \psi) \rightarrow \chi \]
+In einer Übung wurde gezeigt, dass für alle Formeln $\psi$ und $\sigma$ gilt:
+\[ \vdash (\psi \land \neg \psi) \rightarrow \sigma \]
 Dies bedeutet, dass aus einem Widerspruch jede beliebige Aussage logisch folgt.
 \end{remark}
 \end{math-stroke}
@@ -474,6 +474,10 @@ Daraus folgt:
 \end{short-proof}
 \end{math-stroke}
 
+\begin{ai-note}[{Lücke im Nachweis der Rechtsneutralität von e --- Sonnet 5.x / Medium}]
+Der Schritt $x''\cdot(x'\cdot x) = x''\cdot e = x''$ setzt stillschweigend voraus, dass $e$ auch rechtsneutral bezüglich $x''$ ist ($x''\cdot e = x''$) --- das folgt aus $\text{GT}_0$--$\text{GT}_2$ (Assoziativität, Linksneutralität, Linksinverse) an dieser Stelle noch nicht; es ist im Wesentlichen die Aussage, die erst bewiesen werden soll. Sauber begründet ist nur $x''\cdot e = x$ (aus der Assoziativität). Ein Beweis ohne diese Zwischenannahme: $x\cdot x' = e\cdot(x\cdot x') = (x''\cdot x')\cdot(x\cdot x') = x''\cdot((x'\cdot x)\cdot x') = x''\cdot(e\cdot x') = x''\cdot x' = e$. Das Endresultat $x\cdot x'=e$ bleibt richtig.
+\end{ai-note}
+
 % --- TEIL 3 ---
 
 \section{Unabhängigkeit und die Grenzen formaler Systeme}
@@ -489,7 +493,7 @@ Ein klassisches Beispiel dafür, das ich vorhin schon kurz erwähnt habe, ist di
 \begin{definition}[Unabhängigkeit]\label[definition]{def:unabhaengigkeit}
 Eine $\mathcal{L}$-Formel $\sigma$ heißt \newterm{unabhängig} von einer Theorie $T$, falls es Modelle $\mathcal{M}_1, \mathcal{M}_2 \models T$ gibt, so dass gilt:
 \[ \mathcal{M}_1 \models \sigma \quad \text{und} \quad \mathcal{M}_2 \not\models \sigma \]
-Es folgt, dass:
+Es folgt [Anmerkung: nach dem Korrektheitssatz], dass:
 \[ T \not\vdash \sigma \quad \text{und} \quad T \not\vdash \neg \sigma \]
 \end{definition}
 
@@ -609,7 +613,7 @@ Wenn für zwei Mengen $x$ und $y$ gilt, dass $y$ in Relation $\in$ zu $x$ steht 
 \textbf{Die Zermelo-Fraenkel Axiome:}
 \begin{itemize}
     \item \textbf{Zermelo (1908):} 7 Axiome
-    \item \textbf{Fraenkel (1921):} 2 Axiome
+    \item \textbf{Fraenkel (1921):} 2 Axiome \inlinemetanote{[Anmerkung: Typische Lehrbücher zählen oft nur 8 Axiome (Extensionalität, Leere Menge, Paarung, Vereinigung, Potenzmenge, Aussonderung, Ersetzung, Unendlichkeit, Fundierung), da Aussonderung oft als Spezialfall der Ersetzung gilt oder die leere Menge weggelassen wird.]}
 \end{itemize}
 
 \begin{definition}[Signatur von ZF]\label[definition]{def:signatur-zf}
@@ -787,7 +791,7 @@ Für beliebige Mengen $x, y, x', y'$ gilt:
 \begin{nice-box}[Zusammenfassung der Schlüsselkonzepte]
 Wir haben in dieser Vorlesung die folgenden fundamentalen Konzepte erarbeitet:
 \begin{itemize}
-    \item \textbf{Korrektheitssatz:} Wenn eine Formel $\sigma$ aus einer Theorie $T$ formal beweisbar ist ($T \vdash \sigma$), dann ist sie in jedem Modell von $T$ wahr ($T \models \sigma$).
+    \item \textbf{Korrektheitssatz:} Wenn eine Formel $\sigma$ aus einer Theorie $T$ formal beweisbar ist ($T \vdash \sigma$), dann ist sie in jedem Modell von $T$ wahr (d.\,h. für jedes Modell $\mathcal{M}$ von $T$ gilt $\mathcal{M} \models \sigma$).
     \item \textbf{Konsistenz (Widerspruchsfreiheit):} Eine Theorie $T$ ist konsistent, wenn kein Widerspruch aus ihr ableitbar ist. Dies ist äquivalent dazu, dass mindestens eine Formel nicht beweisbar ist.
     \item \textbf{Gödelscher Vollständigkeitssatz:} Jede konsistente Theorie erster Stufe besitzt ein Modell. Dies zeigt die Vollständigkeit unseres Kalküls.
     \item \textbf{Unabhängigkeit:} Eine Aussage ist unabhängig von einer Theorie, wenn weder sie noch ihre Negation beweisbar ist (semantisch: es gibt Modelle für beide Fälle).

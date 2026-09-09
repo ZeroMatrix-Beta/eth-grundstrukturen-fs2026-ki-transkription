@@ -655,7 +655,7 @@ Sei $G = (V, E)$ ein Digraph und $x \in V$.
 \end{definition}
 
 \begin{example}[Schlinge an einem Knoten]
-Besitzt ein Knoten $x$ eine Schlinge $(x, x) \in E$, so gilt $x \in \Gamma^+(x)$ und $x \in \Gamma^-(x)$. Die Schlinge erhöht sowohl $\operatorname{deg}^+(x)$ als auch $\operatorname{deg}^-(x)$ um $1$, womit sie insgesamt mit $2$ zum Gesamtschild $\operatorname{deg}(x)$ beiträgt.
+Besitzt ein Knoten $x$ eine Schlinge $(x, x) \in E$, so gilt $x \in \Gamma^+(x)$ und $x \in \Gamma^-(x)$. Die Schlinge erhöht sowohl $\operatorname{deg}^+(x)$ als auch $\operatorname{deg}^-(x)$ um $1$, womit sie insgesamt mit $2$ zum Gesamtgrad $\operatorname{deg}(x)$ beiträgt.
 \end{example}
 \end{math-stroke}
 
@@ -839,7 +839,7 @@ Sei $G = (V, E)$ ein Graph und $U \subseteq V$. Der von $U$ \newterm{erzeugte (i
 \begin{definition}[Kanteninduzierter Teilgraph]\label[definition]{def:kanteninduzierter-teilgraph}
 Sei $G = (V, E)$ ein Graph und $F \subseteq E$. Der von $F$ \newterm{erzeugte Teilgraph} $G_F \subseteq G$ ist der Teilgraph von $G$ mit Kantenmenge $F$ und Knotenmenge:
 \[
-\bigcup \bigl\{ \{x, y\} \in V \big| \{x, y\} \in F \bigr\}.
+\bigcup_{\{x,y\}\in F}\{x,y\}.
 \]
 \end{definition}
 \end{math-stroke}
@@ -1095,6 +1095,10 @@ A^4 = \begin{pmatrix}
 Der Eintrag $a_{6,5}^{(4)} = 4$ bestätigt, dass es genau $4$ verschiedene Pfeilfolgen der Länge $4$ vom Knoten $6$ zum Knoten $5$ gibt.
 \end{meta-note}
 \end{math-stroke}
+
+\begin{ai-note}[{$A^4$ vermutlich inkonsistent mit dem Graphen weiter oben --- Sonnet 5.x / Medium}]
+Aus der Kantenmenge des früher gezeichneten 6-Knoten-Digraphen (TikZ-Bild, Abschnitt "Komplexeres Beispiel eines gerichteten Multigraphen") hat Knoten $3$ außer seiner eigenen Schlinge keine eingehenden Kanten, weshalb $a_{i,3}^{(k)}=0$ für alle $i\neq 3$ und alle $k$ gelten müsste --- auch für $A^4$. Die hier angegebene Matrix widerspricht dem (u.\,a.\ Spalte 3 sowie der hervorgehobene Wert $a_{6,5}^{(4)}=4$, der bei diesem Graphen $0$ sein sollte). Zu prüfen anhand der Originalfolie/des Videos (ca. 01:19:44--01:25:38), ob dem TikZ-Bild Kanten fehlen oder die $A^4$-Werte fehlerhaft übernommen wurden.
+\end{ai-note}
 
 \begin{nice-box}[Zusammenfassung der Kernkonzepte]
 \begin{itemize}

@@ -494,6 +494,16 @@ Da $\varphi_4 \equiv \varphi \rightarrow \varphi$, ist die Sequenz ein korrekter
 \end{short-proof}
 \end{math-stroke}
 
+\begin{ai-note}[{Fehlerhafte $L_2$-Instanziierung in $\varphi_0$ --- Sonnet 5.x / Medium}]
+Die obige Instanziierung von $\mathbf{L_2}$ ($(\psi\rightarrow(\varphi_1\rightarrow\varphi_2))\rightarrow((\psi\rightarrow\varphi_1)\rightarrow(\psi\rightarrow\varphi_2))$ mit $\psi\equiv\varphi,\ \varphi_1\equiv\varphi\to\varphi,\ \varphi_2\equiv\varphi$) liefert korrekt eingesetzt den Antezedens $\varphi\to((\varphi\to\varphi)\to\varphi)$, nicht das oben gezeigte $\varphi\to(\varphi\to\varphi)$ --- eine Verschachtelungsebene fehlt. Korrekt wäre:
+\begin{align*}
+\varphi_0 &\equiv \bigl(\varphi \rightarrow ((\varphi \rightarrow \varphi) \rightarrow \varphi)\bigr) \rightarrow \Bigl(\bigl(\varphi \rightarrow (\varphi \rightarrow \varphi)\bigr) \rightarrow (\varphi \rightarrow \varphi)\Bigr) \\
+\varphi_1 &\equiv \varphi \rightarrow \bigl((\varphi \rightarrow \varphi) \rightarrow \varphi\bigr) && \text{(Instanziierung von $\mathbf{L_1}$ mit $\psi\equiv\varphi\to\varphi$)} \\
+\varphi_2 &\equiv \bigl(\varphi \rightarrow (\varphi \rightarrow \varphi)\bigr) \rightarrow \bigl(\varphi \rightarrow \varphi\bigr) && \text{(aus $\varphi_0,\varphi_1$ via MP)}
+\end{align*}
+$\varphi_3,\varphi_4$ bleiben unverändert; das Endergebnis $\vdash\varphi\to\varphi$ ist davon unberührt. Die entsprechenden spoken-clean-Passagen (00:33:46--00:38:34) beschreiben noch die vereinfachte (unkorrekte) Formel und wurden gemäß Transkriptionsregeln nicht verändert.
+\end{ai-note}
+
 \begin{meta-note}[Gastvortrag: Fachdidaktik Mathematik]
 Cornelia Busch betritt das Podium und hält eine kurze Präsentation über eine fachdidaktische Studie zum Übergang von der Schule zur Hochschule an der ETH Zürich. Sie projiziert dazu Folien auf die Leinwand.
 \end{meta-note}
@@ -904,7 +914,7 @@ Der fünfte Schritt ist $(x \cdot y) \cdot z = 1 \cdot z$. Das folgt völlig ana
 
 Der letzte Schritt ist $1 \cdot z = z$. Das ist wieder eine Instanziierung des neutralen Elements aus $\mathbf{KT_5}$. 
 
-Wenn wir alle diese einzelnen Gleichungen bewiesen haben, können wir sie über die Transitivität der Gleichheitsrelation --- die wir ja als Äquivalenzrelation bewiesen haben --- zur einzigen Gleichung $y = z$ zusammenfügen. Das zeigt sehr schön, wie mächtig unser formaler Kalkül ist!
+Wenn wir alle diese einzelnen Gleichungen bewiesen haben, können wir sie über die Transitivität der Gleichheitsrelation --- die wir ja als Äquivalenzrelation bewiesen haben [Anmerkung: Die Transitivität wurde in der Vorlesung als Übungsaufgabe belassen] --- zur einzigen Gleichung $y = z$ zusammenfügen. Das zeigt sehr schön, wie mächtig unser formaler Kalkül ist!
 \end{spoken-clean}
 
 \subsection{Beweis der Eindeutigkeit des Inversen}
@@ -916,6 +926,7 @@ Wir beweisen formal die Eindeutigkeit des multiplikativen Inversen in der Körpe
 \begin{short-proof}[Beweis der Eindeutigkeit des Inversen]
 Unter Verwendung des Deduktionstheorems ($\text{DT}$) definieren wir die Voraussetzungsmenge:
 \[ \Phi := \text{KT} \cup \{x \cdot y = 1, \ x \cdot z = 1\} \]
+[Anmerkung: Die Prämisse $\neg(x=0)$ wird im formalen Beweis der Eindeutigkeit tatsächlich gar nicht benötigt und taucht daher in der Herleitung nicht als Voraussetzung auf.]
 Wir zeigen, dass $\Phi \vdash y = z$ gilt, indem wir die Gleichungskette formal herleiten:
 \begin{align*}
 y &= y \cdot 1 && \text{(Axiom $\mathbf{KT_5}$)} \\

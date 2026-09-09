@@ -319,7 +319,7 @@ Okay, und der euklidische Algorithmus besteht einfach darin, dass man dieses Tei
 \end{spoken-clean}
 
 \begin{math-stroke}[Der euklidische Algorithmus]
-Seien $a, b \in \mathbb{N}$ mit $a < b$. Wir führen sukzessive Divisionen mit Rest durch. Es existieren $q_1, \dots, q_{n+1} \in \mathbb{Z}$ und Reste $r_1, \dots, r_n \in \mathbb{N}$ mit:
+Seien $a, b \in \mathbb{N}$ mit $a < b$ \inlinemetanote{[Anmerkung: Hier muss $a > 0$ vorausgesetzt werden, da sonst der erste Divisionsschritt $b = a \cdot q_1 + r_1$ nicht durchführbar ist (Division durch Null)]}. Wir führen sukzessive Divisionen mit Rest durch. Es existieren $q_1, \dots, q_{n+1} \in \mathbb{Z}$ und Reste $r_1, \dots, r_n \in \mathbb{N}$ mit:
 \[ 0 \le r_n < r_{n-1} < \dots < r_1 < a \]
 sodass:
 \begin{align}
@@ -810,7 +810,7 @@ Okay, und da gibt es verschiedene Möglichkeiten, das zu interpretieren. Als Bem
 
 \begin{math-stroke}[Definition der Kongruenz]
 \begin{definition}[Kongruenz modulo $n$]\label[definition]{def:kongruenz}
-Sei $n \in \mathbb{Z}$ und seien $a, b \in \mathbb{Z}$. Wir sagen, $a$ und $b$ sind \newterm{kongruent modulo $n$}, falls $n$ die Differenz $a - b$ teilt:
+Sei $n \in \mathbb{Z}$ \inlinemetanote{[Anmerkung: Meistens schließt man $n=0$ aus (wie in der folgenden Proposition), obwohl die Teilbarkeitsbedingung formal auch für $n=0$ als $a=b$ auswertbar wäre]} und seien $a, b \in \mathbb{Z}$. Wir sagen, $a$ und $b$ sind \newterm{kongruent modulo $n$}, falls $n$ die Differenz $a - b$ teilt:
 \[ n \mid (a - b) \]
 Notation: $a \equiv b \pmod n$.
 \end{definition}

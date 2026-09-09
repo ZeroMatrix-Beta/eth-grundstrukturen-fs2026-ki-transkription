@@ -70,11 +70,9 @@ Hierbei bezeichnet $\mathcal{F}$ ein Mengensystem (eine Kollektion von Mengen) u
 \bigcup \mathcal{F} := \bigcup_{X \in \mathcal{F}} X = \{ x \mid \exists X \in \mathcal{F} \text{ mit } x \in X \}
 \]
 Eine solche Funktion $f$ heißt \newterm{Auswahlfunktion} (Choice function).
-\end{math-stroke}
 
-\begin{didactic-insight}[Notationskonvention des Auswahlaxioms]
-Die Notation ${}^{\mathcal{F}}\!\bigcup \mathcal{F}$ bezeichnet die Menge aller Abbildungen von der Familie $\mathcal{F}$ in ihre Vereinigungsmenge $\bigcup \mathcal{F}$. Das Auswahlaxiom garantiert die Existenz einer solchen Abbildung $f$, die aus jeder nicht-leeren Menge $X \in \mathcal{F}$ ein repräsentatives Element auswählt, sodass $f(X) \in X$ gilt.
-\end{didactic-insight}
+\inlinemetanote{[Anmerkung: Die Notation ${}^{\mathcal{F}}\!\bigcup \mathcal{F}$ bezeichnet die Menge aller Abbildungen von der Familie $\mathcal{F}$ in ihre Vereinigungsmenge $\bigcup \mathcal{F}$. Das Auswahlaxiom garantiert die Existenz einer solchen Abbildung $f$, die aus jeder nicht-leeren Menge $X \in \mathcal{F}$ ein repräsentatives Element auswählt, sodass $f(X) \in X$ gilt.]}
+\end{math-stroke}
 
 \subsection{Äquivalente Formulierung des Auswahlaxioms}
 \begin{spoken-clean}[00:02:40 - 00:03:50]
@@ -255,8 +253,6 @@ Das Auswahlaxiom ($\text{AC}$) und das Wohlordnungsprinzip ($\text{WOP}$) sind �
 \subsection{Grundidee des Beweises: AC \texorpdfstring{$\implies$}{implies} WOP}
 \begin{spoken-clean}[00:19:17 - 00:22:24]
 Und vielleicht einfach noch die Grundidee des Beweises --- und das ist auch ein Lemma, das wir später verwenden werden ---, das uns besagt, dass es für jede Menge eine Ordinalzahl und eine Bijektion zwischen dieser Ordinalzahl und der Menge gibt. Die wichtige Grundidee des Beweises ist also: Für jede Menge $M$ existiert eine Ordinalzahl $\lambda$ und eine Bijektion $w_\lambda \colon \lambda \to M$. Wenn wir eine solche Bijektion haben, erhalten wir natürlich sofort eine Wohlordnung auf der Menge $M$. Das ist die Grundidee.
-
-Das sind die Ordinalzahlen. Dazu noch eine wichtige Bemerkung --- wir werden nächste Woche dann mit den Kardinalzahlen fortfahren. Bei endlichen Mengen und Zahlen ist es so, dass Ordinalzahlen und Kardinalzahlen im Wesentlichen dasselbe sind. Bei jeder endlichen Menge können wir einerseits das Abzählen betrachten: $1, 2, 3, 4, 5, 6, 7$, und andererseits die Anzahl der Elemente --- also die Kardinalität. Die endlichen Kardinalitäten entsprechen genau den endlichen Ordinalzahlen.
 
 Im Unendlichen hingegen sind diese zwei Begriffe völlig verschiedene Dinge. Als Menge betrachtet ist die Ordinalzahl $\omega$ abzählbar, und die Ordinalzahl $\omega + 1$ ist ebenfalls abzählbar. Das heißt, sie haben dieselbe Kardinalität; aber als Ordinalzahlen betrachtet ist $\omega + 1$ natürlich strikt größer als $\omega$.
 \end{spoken-clean}
@@ -481,6 +477,7 @@ Nach Konstruktion von $A_{\delta+1}$ gilt:
 \[
 v_\delta \notin A_{\delta+1} \implies A_{\delta} \cup \{v_\delta\} \text{ ist linear abhängig}.
 \]
+\inlinemetanote{[Anmerkung: Wäre stattdessen $v_\delta \in A_{\delta+1}$, so wäre $v_\delta \in B$, also in $\operatorname{Sp}(B)$, was der Annahme $v_\delta \notin \operatorname{Sp}(B)$ direkt widerspricht.]}
 Daraus folgt unmittelbar $v_\delta \in \operatorname{Sp}(A_\delta) \subseteq \operatorname{Sp}(B)$, was im Widerspruch zu unserer Annahme steht. Somit gilt $\operatorname{Sp}(B) = V$.
 \end{short-proof}
 \end{math-stroke}
@@ -531,7 +528,7 @@ Wir können abzählbare Ordinalzahlen als wohlgeordnete Teilmengen der reellen Z
     \draw[thick, BrickRed] (1, 0.15) -- (1, -0.15) node[below, yshift=-2pt] {\footnotesize $1 \equiv \omega$};
 
     % Ticks and points for the second sequence (approaching 2)
-    \foreach \n in {1, 2, 3, 4, 5, 6} {
+    \foreach \n in {2, 3, 4, 5, 6} { % Startet ab 2, um Überlappung mit 1 zu vermeiden
         \pgfmathsetmacro{\x}{2 - 1/\n}
         \fill[ForestGreen] (\x, 0) circle (1.2pt);
     }
@@ -545,7 +542,7 @@ Wir können abzählbare Ordinalzahlen als wohlgeordnete Teilmengen der reellen Z
     \draw[thick, BrickRed] (2, 0.15) -- (2, -0.15) node[below, yshift=-2pt] {\footnotesize $2 \equiv \omega \cdot 2$};
 
     % Ticks and points for the third sequence (approaching 3)
-    \foreach \n in {1, 2, 3, 4, 5, 6} {
+    \foreach \n in {2, 3, 4, 5, 6} { % Startet ab 2, um Überlappung mit 2 zu vermeiden
         \pgfmathsetmacro{\x}{3 - 1/\n}
         \fill[BurntOrange] (\x, 0) circle (1.2pt);
     }
@@ -833,7 +830,7 @@ Wir definieren die Familie $\mathcal{S}$ aller partiellen Auswahlfunktionen auf 
 \end{equation}
 Wir zeigen, dass die Familie $\mathcal{S}$ endlichen Charakter besitzt:
 \begin{itemize}
-    \item Eine Relation $g$ ist genau dann eine Funktion in $\mathcal{S}$, wenn jede endliche Teilmenge von Paaren in $g$ eine eindeutige Zuordnung definiert und die Auswahlbedingung erfüllt. Dies ist eine rein lokale Eigenschaft, die sich auf endliche Teilmengen reduzieren lässt.
+    \item Eine Relation $g$ ist genau dann eine Funktion in $\mathcal{S}$, wenn jede endliche Teilmenge von Paaren in $g$ eine eindeutige Zuordnung definiert und die Auswahlbedingung erfüllt. Dies ist eine rein lokale Eigenschaft, die sich auf endliche Teilmengen reduzieren lässt. \inlinemetanote{[Anmerkung: ($\Rightarrow$) Jede Teilmenge einer partiellen Auswahlfunktion ist wieder eine. ($\Leftarrow$) Ist jede endliche Teilmenge von $g$ eine partielle Auswahlfunktion, so ist $g$ rechtseindeutig -- andernfalls gäbe es $y_1 \neq y_2$ mit $\langle x,y_1\rangle, \langle x,y_2\rangle \in g$, was in einer endlichen Teilmenge läge -- und es gilt $x \in X$ für alle $\langle X,x\rangle \in g$.]}
 \end{itemize}
 Da $\mathcal{S}$ nicht-leer ist ($\emptyset \in \mathcal{S}$) und endlichen Charakter besitzt, existiert nach dem Teichmüller-Prinzip (\cref{thm:teichmueller-prinzip-actual}) ein bezüglich Inklusion maximales Element $f_0 \in \mathcal{S}$.
 

@@ -486,7 +486,7 @@ g^{|G|} = e.
 \begin{spoken-clean}[00:41:36 - 00:44:16]
 Der Beweis verläuft wie folgt: Wir betrachten die Abbildung $\psi \colon G \to G$, die jedes Element $h$ auf $g \cdot h$ abbildet. Da $G$ eine Gruppe ist, besitzt jedes Element ein Inverses, und wir können leicht zeigen, dass diese Abbildung bijektiv ist. Sie ist injektiv, denn aus $g \cdot h_1 = g \cdot h_2$ folgt durch Multiplikation von links mit $g^{-1}$ direkt $h_1 = h_2$. Und sie ist surjektiv, weil für jedes $y \in G$ das Element $g^{-1} \cdot y$ ein gültiges Urbild darstellt.
 
-Da diese Abbildung eine Bijektion ist, permutiert sie einfach die Elemente der Gruppe. Das bedeutet: Wenn wir das Produkt über alle Elemente der Gruppe bilden, ist das Produkt über alle $h \in G$ genau dasselbe wie das Produkt über alle $g \cdot h$ in $G$. Da die Gruppe abelsch ist, können wir die Faktoren beliebig umordnen. Wir können also das $g$ aus jedem Faktor herausziehen. Da es genau $|G|$ viele Elemente gibt, erhalten wir $g^{|G|}$ mal das Produkt über alle $h$. Da wir in einer Gruppe arbeiten, können wir dieses Produkt auf beiden Seiten kürzen und erhalten genau $g^{|G|} = e$. Das ist wirklich ein extrem eleganter Beweis!
+Da diese Abbildung eine Bijektion ist, permutiert sie einfach die Elemente der Gruppe. Das bedeutet: Wenn wir das Produkt über alle Elemente der Gruppe bilden, ist das Produkt über alle $h \in G$ genau dasselbe wie das Produkt über alle $g \cdot h$ in $G$. Da die Gruppe abelsch ist, können wir die Faktoren beliebig umordnen. Wir können also das $g$ aus jedem Faktor herausziehen. Da es genau $|G|$ viele Elemente gibt, erhalten wir $g^{|G|}$ mal das Produkt über alle $h$. Da wir in einer Gruppe arbeiten, können wir dieses Produkt auf beiden Seiten kürzen und erhalten genau $g^{|G|} = e$. Das ist wirklich ein extrem eleganter Beweis! (Dieser sogenannte Permutationstrick nutzt genial die Invarianz des Gesamtprodukts unter Gruppen-Translationen aus.)
 \end{spoken-clean}
 
 \begin{math-stroke}[Beweis des Satzes von Lagrange]
@@ -806,6 +806,9 @@ x \equiv y \pmod M \implies x \equiv y \pmod{m_i} \quad \text{für alle } i.
 \]
 Die Bijektivität von $\Phi$ ist die direkte algebraische Übersetzung von \cref{thm:chinesischer-restsatz}. Die Homomorphie-Eigenschaft bezüglich Addition und Multiplikation folgt unmittelbar aus der komponentenweisen Definition der Ringoperationen auf dem direkten Produkt:
 \begin{align*}
+\Phi([x + y]_M) &= \left( [x + y]_{m_1}, \dots, [x + y]_{m_r} \right) \\
+&= \left( [x]_{m_1}, \dots, [x]_{m_r} \right) + \left( [y]_{m_1}, \dots, [y]_{m_r} \right) \\
+&= \Phi([x]_M) + \Phi([y]_M), \\[1ex]
 \Phi([x \cdot y]_M) &= \left( [x \cdot y]_{m_1}, \dots, [x \cdot y]_{m_r} \right) \\
 &= \left( [x]_{m_1}, \dots, [x]_{m_r} \right) \cdot \left( [y]_{m_1}, \dots, [y]_{m_r} \right) \\
 &= \Phi([x]_M) \cdot \Phi([y]_M).
@@ -950,7 +953,7 @@ Nach dem Satz von Euler (\cref{thm:satz-von-euler}) gilt $m^{\varphi(n)} \equiv 
 c^d \equiv (1)^k \cdot m \equiv m \pmod n.
 \]
 \textbf{Fall 2 ($\operatorname{ggT}(m, n) \neq 1$):}
-Da $n = p \cdot q$ mit Primzahlen $p \neq q$, gilt ohne Einschränkung der Allgemeinheit $p \mid m$ und $q \nmid m$.
+Da $n = p \cdot q$ mit Primzahlen $p \neq q$, gilt ohne Einschränkung der Allgemeinheit $p \mid m$ und $q \nmid m$ [Anmerkung: Der Fall $m=0$ ist trivialerweise erfüllt, da dann $0^{ed} \equiv 0 \pmod n$ gilt].
 \begin{itemize}
     \item Da $q \nmid m$, gilt nach dem Kleinen Satz von Fermat (\cref{cor:kleiner-fermat}) $m^{q-1} \equiv 1 \pmod q$. Daraus folgt:
     \[

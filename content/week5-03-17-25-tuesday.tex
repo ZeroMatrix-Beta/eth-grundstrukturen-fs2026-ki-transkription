@@ -253,10 +253,15 @@ Die Kuratowski-Definition kodiert die Reihenfolge rein mengenlehretisch ohne neu
     \[
     \langle x, y \rangle = \langle u, v \rangle \iff x = u \land y = v.
     \]
+    \inlinemetanote{[Anmerkung: Zum Beweis ($\Rightarrow$): Ist $\{\{x\}, \{x, y\}\} = \{\{u\}, \{u, v\}\}$, betrachte die Elemente. Fall 1 ($x=y$): Die linke Seite ist $\{\{x\}\}$. Dann muss $\{u\} = \{x\}$ und $\{u,v\} = \{x\}$ sein, woraus $u=x$ und $v=x=y$ folgt. Fall 2 ($x \neq y$): Die linke Seite enthält eine einelementige Menge $\{x\}$ und eine zweielementige Menge $\{x,y\}$. Dies muss auch rechts gelten, also $\{x\}=\{u\} \Rightarrow x=u$ und $\{x,y\} = \{u,v\} \Rightarrow y=v$.]}
     \item Falls $x = y$, gilt $\langle x, x \rangle = \{\{x\}, \{x, x\}\} = \{\{x\}\}$.
 \end{itemize}
 \end{explanation-of-steps}
 \end{math-stroke}
+
+\begin{ai-note}[{Axiomnummerierung im ganzen Kapitel inkonsistent --- Sonnet 5.x / Medium}]
+Die \texttt{enumerate}-Zählung ist an mehreren Stellen dieser Datei verschoben: \texttt{\textbackslash setcounter\{enumi\}\{2\}} hier und \texttt{\textbackslash setcounter\{enumi\}\{3\}} beim Vereinigungsaxiom rendern als (3) bzw. (4) statt der von den Section-Titeln versprochenen (2) bzw. (3); zusätzlich sind die Section-Titel für Unendlichkeitsaxiom ("Axiom 6"), Aussonderungsaxiom ("Axiom 4") und Potenzmengenaxiom ("Axiom 5") gegenüber der tatsächlich gerenderten Nummerierung (4, 5, 6) vertauscht. Bewusst nicht jetzt behoben (siehe Diskussion) --- ggf. in Zukunft mit einer unnummerierten Axiom-Umgebung lösen, die Nummern nicht mehr über \texttt{enumi} zählt.
+\end{ai-note}
 
 \section{Das Vereinigungsaxiom (Axiom 3)}
 
@@ -633,7 +638,7 @@ Die Menge der natürlichen Zahlen \newterm{$\omega$} (von Neumannsches $\omega$)
 \omega := \bigcap \{ X \in \mathcal{P}(I_0) \mid \operatorname{ind}(X) \}
 \]
 \end{definition}
-wobei $I_0$ eine nach dem Unendlichkeitsaxiom existierende induktive Menge ist.
+wobei $I_0$ eine nach dem Unendlichkeitsaxiom existierende induktive Menge ist. \inlinemetanote{[Anmerkung: $\omega$ ist wohldefiniert, da der Durchschnitt unabhängig von der Wahl der induktiven Menge $I_0$ ist. Für zwei solche Mengen $I_0, I_1$ ist auch $I_0 \cap I_1$ induktiv, wodurch der Schnitt aller induktiven Teilmengen identisch bleibt.]}
 \end{math-stroke}
 
 \begin{spoken-clean}[00:46:16 - 00:47:57]
@@ -837,6 +842,7 @@ Und dann sagen wir: Eine $n$-stellige Relation $R$ ist einfach eine Teilmenge $R
 
 \begin{math-stroke}
 \begin{definition}[$n$-stellige Relation]\label[definition]{def:n-ary-relation}
+\inlinemetanote{[Anmerkung: Das $n$-fache kartesische Produkt $A^n$ wird formal als die Menge aller Funktionen von $n$ nach $A$ definiert: $A^n := \{f \mid f\colon n \to A\}$.]}
 Eine \newterm{$n$-stellige Relation} $R$ auf einer Menge $A$ ist eine Teilmenge des $n$-fachen kartesischen Produkts von $A$:
 \[
 R \subseteq A^n

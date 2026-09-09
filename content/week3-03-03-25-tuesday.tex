@@ -300,6 +300,10 @@ Damit ist der Induktionsschritt gezeigt. Nach dem Induktionsschema \eqref{eq:pa6
 \end{short-proof}
 \end{math-stroke}
 
+\begin{ai-note}[{Lücke im Induktionsschritt --- Sonnet 5.x / Medium}]
+Die dritte Zeile der obigen `align*`-Kette ist textidentisch mit der zweiten (kein tatsächlicher Umformungsschritt), und die Endbegründung "nach $\mathbf{PA_3}$ und $\mathbf{PA_2}$" überspringt die eigentliche Umgruppierung. Vollständig: $(x+x)+S(S(0)) = (x+S(S(0)))+x$ (Kommutativität/Assoziativität) $= S(S(x))+x$ (zweimal $\mathbf{PA_3}$ und $\mathbf{PA_2}$) $= S(x)+S(x)$ (Kommutativität und $\mathbf{PA_3}$). Das Endresultat bleibt korrekt.
+\end{ai-note}
+
 \section{Modelltheorie}
 
 \begin{spoken-clean}[00:31:45 - 00:33:15]
@@ -371,7 +375,7 @@ Machen wir das doch präzise --- aber eben im Kontext einer naiven Mengenlehre u
 \begin{spoken-clean}[00:39:40 - 00:41:30]
 Noch eine Definition. Wir haben eine Signatur $\mathcal{L}$. Wir sagen nun: Eine $\mathcal{L}$-Struktur $M$ besteht aus einer nicht-leeren Menge $A$ und einer Abbildung. Diese Abbildung ordnet jedem Konstantensymbol $c \in \mathcal{L}$ ein Element $c^M \in A$ zu. Wir verwenden hier auch den Begriff des Elementseins einer Menge, aber eben im naiven Sinn.
 
-Jedem $n$-stelligen Relationssymbol $R \in \mathcal{L}$ ordnen wir eine Menge von $n$-Tupeln $R^M$ zu. Ein $n$-Tupel ist dabei eine Teilmenge von $A^n$. Wir sagen einfach: All diese $n$-Tupel sind diejenigen, die diese Relation erfüllen. Das ist einfach eine Mengenschreibweise für Relationen, und die verwenden wir hier. Für jedes Relationssymbol erhalten wir also tatsächlich eine Relation auf unserem Bereich $A$.
+Jedem $n$-stelligen Relationssymbol $R \in \mathcal{L}$ ordnen wir eine Menge von $n$-Tupeln $R^M$ zu. Ein $n$-Tupel ist dabei eine Teilmenge von $A^n$ [Anmerkung: Ein $n$-Tupel ist ein Element von $A^n$; eine Menge von $n$-Tupeln ist eine Teilmenge von $A^n$]. Wir sagen einfach: All diese $n$-Tupel sind diejenigen, die diese Relation erfüllen. Das ist einfach eine Mengenschreibweise für Relationen, und die verwenden wir hier. Für jedes Relationssymbol erhalten wir also tatsächlich eine Relation auf unserem Bereich $A$.
 \end{spoken-clean}
 
 \begin{math-stroke}[Definition der \texorpdfstring{$\mathcal{L}$}{L}-Struktur]

@@ -558,7 +558,7 @@ h(x) := \begin{cases}
   \node[align=left, anchor=north west] at (0, -0.5) {
     \textbf{Konstruktion der Bijektion $h$:}\\
     \tikz[baseline=-0.5ex] \filldraw[fill=fillE, draw=colE, thick] (0,0) rectangle (0.3,0.3); Menge $\textcolor{Fuchsia}{E}$ (lila/pink): Hier wirkt $h = \textcolor{RoyalBlue}{f}$ (Pfeile nach rechts).\\
-    \tikz[baseline=-0.5ex] \filldraw[fill=fillA, draw=colA, thick] (0,0) rectangle (0.3,0.3); Menge $\textcolor{ForestGreen}{A} \setminus \textcolor{Fuchsia}{E}$ (grün): Hier wirkt $h = \textcolor{BurntOrange}{g}^{-1}$ (Pfeile nach links umgekehrt).
+    \tikz[baseline=-0.5ex] \filldraw[fill=fillA, draw=colA, thick] (0,0) rectangle (0.3,0.3); Menge $\textcolor{ForestGreen}{A} \setminus \textcolor{Fuchsia}{E}$ (grün): Hier wirkt $h = \textcolor{BurntOrange}{g}^{-1}$ (Pfeile nach links umgekehrt). \inlinemetanote{[Anmerkung: Die im Diagramm ebenfalls eingezeichnete duale Kette $g(B \setminus f(A))$ etc. dient rein der vollständigen Visualisierung und wird im Beweis nicht explizit benötigt.]}
   };
 \end{tikzpicture}
 \end{center}
@@ -796,7 +796,7 @@ Aber $\omega$ ist eine Kardinalzahl, weil jede kleinere Ordinalzahl endlich ist,
 
 \begin{math-stroke}
 \begin{definition}[Kardinalzahl]\label[definition]{def:kardinalzahl}
-Eine Ordinalzahl $\kappa \in \Omega$ heißt \newterm{Kardinalzahl}, falls für alle Ordinalzahlen $\alpha < \kappa$ gilt:
+Eine Ordinalzahl $\kappa \in \Omega$ heißt \newterm{Kardinalzahl}, falls für alle Ordinalzahlen $\alpha < \kappa$ gilt \inlinemetanote{[Anmerkung: Da wir bereits $|\alpha| \le |\kappa|$ durch die Inklusion $\alpha \subseteq \kappa$ wissen, ist die Bedingung $|\alpha| < |\kappa|$ äquivalent zu $|\alpha| \neq |\kappa|$, was der gesprochenen Intuition entspricht]}:
 \begin{equation}\label{eq:kardinalzahl-def}
 |\alpha| < |\kappa|
 \end{equation}
@@ -827,7 +827,7 @@ Die \newterm{Kardinalität} (oder Mächtigkeit) $|M|$ einer Menge $M$ ist die kl
 \begin{spoken-clean}[00:57:32 - 00:59:25]
 Bemerkung: Wenn $\kappa$ eine Kardinalzahl ist, was ist dann die Kardinalität von $\kappa$? Das ist natürlich $\kappa$ selbst, weil $\kappa$ ja die kleinste Ordinalzahl ist, die gleichmächtig zu $\kappa$ ist. Für jede Kardinalzahl $\kappa$ gilt also $|\kappa| = \kappa$. Das ist eine sehr nützliche Eigenschaft.
 
-Wir können auch zeigen, dass jede unendliche Kardinalzahl eine Limes-Ordinalzahl ist --- das gilt natürlich nicht für die endlichen Kardinalzahlen, aber für unendliche Kardinalzahlen gilt das immer. Und wir schreiben für diese unendlichen Kardinalzahlen oft $\aleph_\alpha$ oder $\omega_\alpha$.
+Wir können auch zeigen, dass jede unendliche Kardinalzahl eine Limes-Ordinalzahl ist \inlinemetanote{[Anmerkung: Denn andernfalls wäre sie von der Form $\kappa = \alpha + 1$, und für unendliche Mengen gilt $|\alpha + 1| = |\alpha|$, was der Eigenschaft $|\alpha| < |\kappa|$ einer Kardinalzahl widerspricht]} --- das gilt natürlich nicht für die endlichen Kardinalzahlen, aber für unendliche Kardinalzahlen gilt das immer. Und wir schreiben für diese unendlichen Kardinalzahlen oft $\aleph_\alpha$ oder $\omega_\alpha$.
 \end{spoken-clean}
 
 \begin{math-stroke}[Eigenschaften von Kardinalzahlen]

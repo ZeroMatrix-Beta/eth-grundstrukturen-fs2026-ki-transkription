@@ -15,7 +15,7 @@
 
 % Primary Language: German
 
-\lecturechapter[1]{Dienstag}{17. Feb}{17. Februar 2026}{Grundstrukturen}
+\lecturechapter[1]{Dienstag}{17. Feb}{17. Februar 2026}{Einführung, Organisation und Syntax der Prädikatenlogik}
 
 
 \begin{nice-box}[Syllabus \& Agenda]
@@ -609,7 +609,7 @@ Man muss hier ein bisschen aufpassen: Eine Variable kann in einer Formel sowohl 
 \begin{definition}[Variablen in einem Term]\label[definition]{def:variablen-in-term}
 Für einen $\mathcal{L}$-Term $\tau$ ist die Menge $\operatorname{var}(\tau)$ der in $\tau$ vorkommenden Variablen rekursiv wie folgt definiert:
 \begin{enumerate}[label=\textbf{(VT\arabic*)}, start=0]
-    \item Ist $\tau \equiv x$ eine Variable, so ist $\operatorname{var}(x) := \{x\}$.
+    \item Ist $\tau \equiv x$ eine Variable (eigentlich $\nu$, nicht $x$), so ist $\operatorname{var}(x) := \{x\}$.
     \item Ist $\tau \equiv c$ eine Konstante, so ist $\operatorname{var}(c) := \emptyset$.
     \item Ist $\tau \equiv F \tau_1 \dots \tau_n$, wobei $F$ ein $n$-stelliges Funktionssymbol ist, so ist:
     \[
@@ -624,7 +624,7 @@ Für einen $\mathcal{L}$-Term $\tau$ ist die Menge $\operatorname{var}(\tau)$ de
 \begin{itemize}
     \item Ein Vorkommen einer Variablen $\nu$ in einer Formel $\varphi$ heißt \newterm{gebunden}, falls es im Bereich eines Quantors $\exists \nu$ oder $\forall \nu$ (\cref{def:bereich-quantor}) liegt.
     \item Ein Vorkommen einer Variablen $\nu$ heißt \newterm{frei}, falls es nicht gebunden ist.
-    \item Wir bezeichnen mit $\operatorname{frei}(\varphi)$ die Menge aller Variablen, die in $\varphi$ mindestens ein freies Vorkommen besitzen (bezogen auf die Menge $\operatorname{var}(\tau)$ der Variablen in ihren Termen, vgl. \cref{def:variablen-in-term}).
+    \item Wir bezeichnen mit $\operatorname{frei}(\varphi)$ die Menge aller Variablen, die in $\varphi$ mindestens ein freies Vorkommen besitzen (bezogen auf die Menge $\operatorname{var}(\tau)$ der Variablen in ihren Termen, vgl. \cref{def:variablen-in-term}). \inlinemetanote{[Anmerkung: Die Menge $\operatorname{frei}(\varphi)$ lässt sich auch präzise rekursiv definieren: $\operatorname{frei}(\tau_1 = \tau_2) := \operatorname{var}(\tau_1) \cup \operatorname{var}(\tau_2)$, $\operatorname{frei}(R \tau_1 \dots \tau_n) := \operatorname{var}(\tau_1) \cup \dots \cup \operatorname{var}(\tau_n)$, $\operatorname{frei}(\neg \varphi) := \operatorname{frei}(\varphi)$, $\operatorname{frei}(\varphi \circ \psi) := \operatorname{frei}(\varphi) \cup \operatorname{frei}(\psi)$ für $\circ \in \{\wedge, \vee, \to, \leftrightarrow\}$, und $\operatorname{frei}(\exists \nu \varphi) := \operatorname{frei}(\forall \nu \varphi) := \operatorname{frei}(\varphi) \setminus \{\nu\}$.]}
 \end{itemize}
 \end{definition}
 \end{math-stroke}
