@@ -243,7 +243,7 @@ In anderen Worten: Wenn wir $\sigma$ aus $T$ beweisen können, dann is $\sigma$ 
 \begin{theorem}[Korrektheitssatz]\label[theorem]{thm:korrektheitssatz}
 Sei $\mathcal{L}$ eine Signatur, $T$ eine Menge von $\mathcal{L}$-Formeln und $\sigma$ eine $\mathcal{L}$-Formel. Falls gilt:
 \[ T \vdash \sigma \]
-dann gilt für jedes Modell $\mathcal{M}$ von $T$:
+dann gilt für jede $\mathcal{L}$-Struktur $\mathcal{M}$:
 \[ \mathcal{M} \models T \implies \mathcal{M} \models \sigma \]
 \end{theorem}
 
@@ -325,7 +325,7 @@ Wir beweisen die Kontraposition beider Richtungen:
 \begin{remark}[Ex Falso Quodlibet]
 In einer Übung wurde gezeigt, dass für alle Formeln $\psi$ und $\sigma$ gilt:
 \[ \vdash (\psi \land \neg \psi) \rightarrow \sigma \]
-Dies bedeutet, dass aus einem Widerspruch jede beliebige Aussage logisch folgt.
+Dies bedeutet, dass aus einem Widerspruch jede beliebige Aussage logisch folgt. Man kann es auch unmittelbar aus den logischen Axiomen ablesen: $\mathbf{L_9}$ liefert $\neg\psi \rightarrow (\psi \rightarrow \sigma)$, während $\mathbf{L_3}$ und $\mathbf{L_4}$ aus $\psi \land \neg\psi$ die beiden Konjunkte $\psi$ und $\neg\psi$ herauslösen; zweimaliges Verketten (mittels $\mathbf{L_2}$) ergibt die Behauptung.
 \end{remark}
 \end{math-stroke}
 
@@ -395,7 +395,7 @@ Damit sieht man nämlich: Wenn wir eine Formel haben, die wir formal beweisen wo
 \end{spoken-clean}
 
 \begin{math-stroke}[Semantischer Beweisweg]
-Anordnungssystem $T$, formal $\sigma$.
+Axiomensystem $T$, Formel $\sigma$.
 
 Möchten zeigen: $T \vdash \sigma$.
 
@@ -496,6 +496,14 @@ Eine $\mathcal{L}$-Formel $\sigma$ heißt \newterm{unabhängig} von einer Theori
 Es folgt [Anmerkung: nach dem Korrektheitssatz], dass:
 \[ T \not\vdash \sigma \quad \text{und} \quad T \not\vdash \neg \sigma \]
 \end{definition}
+
+\begin{explanation-of-steps}[Beide Formulierungen der Unabhängigkeit sind äquivalent]
+Der Dozent definiert \newterm{unabhängig} zunächst syntaktisch --- $T \nvdash \sigma$ \emph{und} $T \nvdash \neg\sigma$ --- und gibt die obige Modellbedingung als semantische Übersetzung an. Dass beides dasselbe besagt, benutzt beide grossen Sätze dieses Abschnitts:
+\begin{itemize}
+    \item \textbf{Modelle $\Rightarrow$ Unbeweisbarkeit} (die im Kasten notierte Richtung): Wäre $T \vdash \sigma$, so gälte $\sigma$ nach dem Korrektheitssatz (\cref{thm:korrektheitssatz}) in \emph{jedem} Modell von $T$, insbesondere in $\mathcal{M}_2$ --- Widerspruch zu $\mathcal{M}_2 \not\models \sigma$. Analog verhindert $\mathcal{M}_1 \models \sigma$, dass $T \vdash \neg\sigma$ gilt.
+    \item \textbf{Unbeweisbarkeit $\Rightarrow$ Modelle:} Diese Richtung braucht den Vollständigkeitssatz (\cref{thm:goedelscher-vollstaendigkeitssatz}). Aus $T \nvdash \neg\sigma$ folgt (mit dem Deduktionstheorem und \emph{ex falso}), dass $T \cup \{\sigma\}$ konsistent ist, also ein Modell $\mathcal{M}_1$ besitzt; symmetrisch liefert $T \nvdash \sigma$ ein Modell $\mathcal{M}_2$ von $T \cup \{\neg\sigma\}$.
+\end{itemize}
+\end{explanation-of-steps}
 
 \begin{example}[Kommutativität in der Gruppentheorie]\label[example]{ex:kommutativitaet-unabhaengig}
 Sei $\text{GT}$ die Theorie der Gruppen. Die Formel:
@@ -613,7 +621,7 @@ Wenn für zwei Mengen $x$ und $y$ gilt, dass $y$ in Relation $\in$ zu $x$ steht 
 \textbf{Die Zermelo-Fraenkel Axiome:}
 \begin{itemize}
     \item \textbf{Zermelo (1908):} 7 Axiome
-    \item \textbf{Fraenkel (1921):} 2 Axiome \inlinemetanote{[Anmerkung: Typische Lehrbücher zählen oft nur 8 Axiome (Extensionalität, Leere Menge, Paarung, Vereinigung, Potenzmenge, Aussonderung, Ersetzung, Unendlichkeit, Fundierung), da Aussonderung oft als Spezialfall der Ersetzung gilt oder die leere Menge weggelassen wird.]}
+    \item \textbf{Fraenkel (1921):} 2 Axiome \inlinemetanote{[Anmerkung: Die Zahl neun ist Zählkonvention. Viele Lehrbücher kommen auf acht (Extensionalität, Paarung, Vereinigung, Potenzmenge, Unendlichkeit, Aussonderung, Ersetzung, Fundierung), weil sie das Axiom der leeren Menge weglassen: ihre Existenz folgt bereits aus der Aussonderung, sobald überhaupt eine Menge existiert. Manche zählen sogar nur sieben, da die Aussonderung ein Spezialfall der Ersetzung ist.]}
 \end{itemize}
 
 \begin{definition}[Signatur von ZF]\label[definition]{def:signatur-zf}

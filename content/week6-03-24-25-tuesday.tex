@@ -494,7 +494,7 @@ Wir definieren den Dedekindschen Schnitt für $\sqrt{2}$ durch:
 \end{example}
 
 \begin{explanation-of-steps}[Warum die Bedingung $p < 0$?]
-Ein Dedekindscher Schnitt muss nach unten unbeschränkt sein (Bedingung \textbf{(D1)}). Würden wir nur $p^2 < 2$ fordern, lägen negative Zahlen wie $-3$ nicht in der Menge, obwohl sie kleiner als $\sqrt{2}$ sind. Daher nehmen wir alle negativen rationalen Zahlen explizit mit auf.
+Ein Dedekindscher Schnitt muss nach unten abgeschlossen sein (Bedingung \textbf{(D1)}). Würden wir nur $p^2 < 2$ fordern, so läge etwa $1$ in der Menge ($1^2 = 1 < 2$), nicht aber die kleinere Zahl $-3$ (denn $(-3)^2 = 9 > 2$) --- \textbf{(D1)} wäre also verletzt. Daher nehmen wir alle negativen rationalen Zahlen explizit mit auf.
 \end{explanation-of-steps}
 \end{math-stroke}
 
@@ -697,7 +697,7 @@ Betrachten wir den rationalen Schnitt $\alpha_s = \{q \in \mathbb{Q} \mid q < s\
 \begin{itemize}
     \item Für $p = -s$ gilt für jedes $q \in \alpha$: $q + (-s) < s - s = 0$.
     \item Damit läge $-s$ in $-\alpha_{\text{naiv}}$, und $-s$ wäre das \emph{maximale Element} dieser Menge.
-    \item Ein Dedekindscher Schnitt darf jedoch nach Axiom \textbf{(D2)} **kein maximales Element** besitzen!
+    \item Ein Dedekindscher Schnitt darf jedoch nach Axiom \textbf{(D2)} \textbf{kein maximales Element} besitzen!
 \end{itemize}
 
 \textbf{Die elegante Korrektur:}
@@ -713,8 +713,8 @@ Dies garantiert, dass $-\alpha$ nach unten abgeschlossen ist und kein größtes 
 \begin{definition}[Ordnung auf $\mathbb{R}$]\label{def:ordnung-reell}
 Für zwei reelle Zahlen $\alpha, \beta \in \mathbb{R}$ definieren wir:
 \begin{enumerate}[label=\textbf{(\roman*)}]
-    \item \textbf{(i)} $\alpha \le \beta :\iff \alpha \subseteq \beta$
-    \item \textbf{(ii)} $\alpha < \beta :\iff \alpha \subsetneq \beta$
+    \item $\alpha \le \beta :\iff \alpha \subseteq \beta$
+    \item $\alpha < \beta :\iff \alpha \subsetneq \beta$
 \end{enumerate}
 \end{definition}
 
@@ -751,6 +751,13 @@ Im Skript wird die Multiplikation oft nur für positive reelle Zahlen explizit h
 \end{explanation-of-steps}
 \end{math-stroke}
 
+\begin{ai-note}[{In Fall 1 muss $p \le 0$ statt $p < 0$ stehen --- Opus 5}]
+% [PERSISTENT]
+So wie \cref{def:multiplikation-reell} oben notiert ist, fehlt der Menge $\alpha \cdot \beta$ genau das Element $0$: Die Bedingung $p < 0$ schliesst $0$ aus, und $0 = q \cdot r$ ist mit $q, r > 0$ unmöglich. Da $\alpha, \beta > 0_{\mathbb{R}}$ sind, gibt es aber nach \textbf{(D2)} rationale $q \in \alpha$, $r \in \beta$ mit $q, r > 0$, also liegt $q \cdot r > 0$ in $\alpha \cdot \beta$ --- und $0 < q \cdot r$, ohne dass $0$ selbst in der Menge wäre. Das verletzt \textbf{(D1)}. Korrekt lautet die erste Zeile daher
+\[ \alpha \cdot \beta := \{ p \in \mathbb{Q} \mid p \le 0 \ \text{ oder } \ \exists q \in \alpha, r \in \beta \text{ mit } q, r > 0 \text{ und } p = q \cdot r \}. \]
+Mit $p \le 0$ sind alle drei Bedingungen erfüllt: \textbf{(D1)} für $0 < y < q \cdot r$ folgt aus $y/r < q$ und der Abgeschlossenheit von $\alpha$; \textbf{(D2)} folgt für $p \le 0$ aus $q \cdot r > 0$ und für $p = q \cdot r$ aus einem $q' \in \alpha$ mit $q' > q$. Die anschliessende Erläuterung (\qt{alle rationalen Zahlen $p < 0$}) ist entsprechend als $p \le 0$ zu lesen.
+\end{ai-note}
+
 \subsection{Die Körperstruktur von \texorpdfstring{$\mathbb{R}$}{R}}
 
 \begin{spoken-clean}[01:10:00 - 01:12:45]
@@ -765,7 +772,7 @@ Die Menge der reellen Zahlen $\mathbb{R}$ bildet mit der oben definierten Additi
 \end{theorem}
 
 \begin{exercise}[Übung für lange Zugfahrten]
-Verifizieren Sie die Körperaxiome $\mathbf{R_0}$ bis $\mathbf{R_{16}}$ für das Modell der Dedekindschen Schnitte. Zeigen Sie insbesondere die Gültigkeit des Distributivgesetzes:
+Verifizieren Sie die Axiome $\mathbf{R_0}$ bis $\mathbf{R_{16}}$ (Körper-, Ordnungs- und Kompatibilitätsaxiome) für das Modell der Dedekindschen Schnitte. Zeigen Sie insbesondere die Gültigkeit des Distributivgesetzes:
 \[ \alpha \cdot (\beta + \gamma) = \alpha \cdot \beta + \alpha \cdot \gamma \]
 \end{exercise}
 \end{math-stroke}
@@ -807,7 +814,7 @@ Der Beweis ist dafür wirklich natürlich. Wir konstruieren das Supremum $\beta$
         \item $\beta \neq \emptyset$, da $X \neq \emptyset$ (es existiert ein $\alpha \in X$) und $\alpha \neq \emptyset$.
         \item $\beta \neq \mathbb{Q}$, da $X$ nach oben beschränkt ist. Sei $\gamma \in \mathbb{R}$ eine obere Schranke, d.\,h. $\forall \alpha \in X \colon \alpha \subseteq \gamma$. Dann gilt $\beta = \bigcup_{\alpha \in X} \alpha \subseteq \gamma$. Da $\gamma \neq \mathbb{Q}$, folgt $\beta \neq \mathbb{Q}$.
     \end{itemize}
-    \item \textbf{(Abgeschlossenheit nach unten:} Sei $p \in \beta$ und $q < p$. Dann $\exists \alpha \in X$ mit $p \in \alpha$. Da $\alpha$ ein Schnitt ist, folgt $q \in \alpha \subseteq \beta$.
+    \item \textbf{Abgeschlossenheit nach unten:} Sei $p \in \beta$ und $q < p$. Dann $\exists \alpha \in X$ mit $p \in \alpha$. Da $\alpha$ ein Schnitt ist, folgt $q \in \alpha \subseteq \beta$.
     \item \textbf{Kein Maximum:} Sei $p \in \beta$. Dann $\exists \alpha \in X$ mit $p \in \alpha$. Da $\alpha$ kein Maximum hat, $\exists q \in \alpha$ mit $p < q$. Es folgt $q \in \beta$.
 \end{enumerate}
 \end{math-stroke}

@@ -595,6 +595,7 @@ $\omega$ ist eine Ordinalzahl. Wir können weitere Ordinalzahlen durch die Nachf
 \omega \cdot 3, \dots, \omega \cdot \omega &= \omega^2, \omega^3, \dots, \omega^\omega, \omega^{\omega^\omega}, \dots
 \end{align*}
 \end{remark}
+\end{math-stroke}
 
 \begin{didactic-insight}[Besonderheiten transfiniter Ordinalzahl-Arithmetik]
 Bei der Addition und Multiplikation transfiniter Ordinalzahlen muss man auf die Reihenfolge achten:
@@ -603,7 +604,6 @@ Bei der Addition und Multiplikation transfiniter Ordinalzahlen muss man auf die 
     \item \textbf{Rolle des Ersetzungsaxioms:} Um zu beweisen, dass Limes-Ordinalzahlen wie $\omega \cdot 2 = \bigcup_{n \in \omega} (\omega + n)$ existieren, benötigt man zwingend das Ersetzungsaxiom (\cref{ax:replacement}), da nur dieses garantiert, dass das Bild der Klassenfunktion $n \mapsto \omega + n$ über der Menge $\omega$ wieder eine Menge bildet.
 \end{itemize}
 \end{didactic-insight}
-\end{math-stroke}
 
 \subsection{Eigenschaften der Klasse der Ordinalzahlen}
 
@@ -626,7 +626,7 @@ Haben Sie dazu Fragen? Das war übrigens nur eine Person: Cesare Burali-Forti wa
 In $\text{ZF}$ gilt:
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \item $\forall \alpha \in \Omega \colon \alpha = \emptyset \lor \emptyset \in \alpha$
-    \item $\forall \alpha \in \beta, \beta \in \Omega \implies \alpha \in \Omega$
+    \item $\forall \beta \in \Omega \, \forall \alpha \in \beta \colon \alpha \in \Omega$
     \item $\forall \alpha, \beta \in \Omega \colon \text{entweder } \alpha \in \beta \text{ oder } \alpha = \beta \text{ oder } \beta \in \alpha$
     \item $\forall S \text{ Menge von Ordinalzahlen} \colon \bigcap S \in \Omega, \bigcup S \in \Omega$
     \item $\forall S \subseteq \Omega, S \neq \emptyset \implies \exists \text{ minimales Element}$
@@ -799,7 +799,7 @@ Und drittens: $v$ ist surjektiv. Das ist das Interessante. Hier verwende ich, da
 \begin{enumerate}[label=\textbf{(\roman*)}]
     \item $v$ ist eine Abbildung $\alpha \to A$.
     \item $v$ ist injektiv.
-    \item $v$ ist surjektiv. \inlinemetanote{[Anmerkung: Wäre $v$ nicht surjektiv, gäbe es ein Element $x = F(A \setminus \operatorname{bild}(v))$. Man könnte dann $v$ auf $\alpha \cup \{\alpha\}$ erweitern, indem man $\alpha$ auf $x$ abbildet. Diese Erweiterung wäre wieder eine $F$-Menge, was der Maximalität der Vereinigung $v$ widerspricht.]}
+    \item $v$ ist surjektiv. \inlinemetanote{[Anmerkung: Wäre $v$ nicht surjektiv, so wäre $A \setminus v[\alpha] \neq \emptyset$, und die Auswahlfunktion lieferte ein Element $x := f(A \setminus v[\alpha])$. Man könnte $v$ dann auf $\alpha \cup \{\alpha\}$ erweitern, indem man $\alpha$ auf $x$ abbildet; nach \cref{def:f-menge} wäre $\langle \alpha \cup \{\alpha\}, v \cup \{\langle \alpha, x\rangle\}\rangle$ wieder eine F-Menge, also ein Element von $S$. Dann müsste aber $\alpha \cup \{\alpha\} \subseteq \alpha$ gelten, d.\,h.\ $\alpha \in \alpha$ --- ein Widerspruch (\cref{ax:foundation}).]}
 \end{enumerate}
 \end{math-stroke}
 
@@ -967,7 +967,7 @@ Er hat anscheinend einem Kollegen folgende Geschichte erzählt: Er versuchte, da
 
 \begin{math-stroke}[Satz von Tarski]
 \begin{theorem}[Satz von Tarski]\label[theorem]{thm:tarski-cardinal-product}
-Für jede unendliche Menge $A$ existiert eine Bijektion zwischen $A$ und dem kartesischen Produkt $A \times A$:
+Unter Annahme des Auswahlaxioms gilt: Für jede unendliche Menge $A$ existiert eine Bijektion zwischen $A$ und dem kartesischen Produkt $A \times A$:
 \[
 |A| = |A \times A|
 \]

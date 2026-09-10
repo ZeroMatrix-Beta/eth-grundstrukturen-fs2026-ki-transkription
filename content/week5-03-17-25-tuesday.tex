@@ -230,7 +230,7 @@ wobei $\in$ ein zweistelliges Relationssymbol ist.
 \begin{math-stroke}
 \begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 2)]
 \begin{enumerate}[label=\textbf{(\arabic*)}]
-    \setcounter{enumi}{2}
+    \setcounter{enumi}{1}
     \item \textbf{Paarmengenaxiom:}
     \label[axiom]{ax:pair-set}
     \[
@@ -259,9 +259,6 @@ Die Kuratowski-Definition kodiert die Reihenfolge rein mengenlehretisch ohne neu
 \end{explanation-of-steps}
 \end{math-stroke}
 
-\begin{ai-note}[{Axiomnummerierung im ganzen Kapitel inkonsistent --- Sonnet 5.x / Medium}]
-Die \texttt{enumerate}-Zählung ist an mehreren Stellen dieser Datei verschoben: \texttt{\textbackslash setcounter\{enumi\}\{2\}} hier und \texttt{\textbackslash setcounter\{enumi\}\{3\}} beim Vereinigungsaxiom rendern als (3) bzw. (4) statt der von den Section-Titeln versprochenen (2) bzw. (3); zusätzlich sind die Section-Titel für Unendlichkeitsaxiom ("Axiom 6"), Aussonderungsaxiom ("Axiom 4") und Potenzmengenaxiom ("Axiom 5") gegenüber der tatsächlich gerenderten Nummerierung (4, 5, 6) vertauscht. Bewusst nicht jetzt behoben (siehe Diskussion) --- ggf. in Zukunft mit einer unnummerierten Axiom-Umgebung lösen, die Nummern nicht mehr über \texttt{enumi} zählt.
-\end{ai-note}
 
 \section{Das Vereinigungsaxiom (Axiom 3)}
 
@@ -270,7 +267,7 @@ Die \texttt{enumerate}-Zählung ist an mehreren Stellen dieser Datei verschoben:
 \begin{math-stroke}
 \begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 3)]
 \begin{enumerate}[label=\textbf{(\arabic*)}]
-    \setcounter{enumi}{3}
+    \setcounter{enumi}{2}
     \item \textbf{Vereinigungsaxiom:}
     \label[axiom]{ax:union-set}
     \[
@@ -333,7 +330,7 @@ Genau, wir nehmen die Paarmenge von $x$ und $y$. Wir wissen, dass sie existiert,
 Gut. Man muss sagen, dass das hier natürlich existiert und eindeutig ist; deswegen können wir es so schreiben, auch wieder mit dem Extensionalitätsaxiom.
 \end{spoken-clean}
 
-\section{Das Unendlichkeitsaxiom und die Menge \texorpdfstring{$\omega$}{omega} (Axiom 6)}
+\section{Das Unendlichkeitsaxiom und die Menge \texorpdfstring{$\omega$}{omega} (Axiom 4)}
 
 \subsection{Die von Neumann-Konstruktion der natürlichen Zahlen}
 \begin{spoken-clean}[continued]
@@ -411,7 +408,7 @@ Das einstellige Prädikat \newterm{$\operatorname{ind}(x)$} für die Induktivit�
 
 \begin{example}[Die leere Menge als Randfall]
 \label[example]{ex:empty-set-inductive}
-Die leere Menge $\emptyset$ ist \emph{nicht} induktiv, da sie die Bedingung $\emptyset \in \emptyset$ verletzt (eine Menge kann sich selbst nicht als Element enthalten).
+Die leere Menge $\emptyset$ ist \emph{nicht} induktiv, da sie die Bedingung $\emptyset \in \emptyset$ verletzt: $\emptyset$ besitzt überhaupt kein Element. \inlinemetanote{[Anmerkung: Dass \emph{keine} Menge sich selbst enthält, ist eine stärkere Aussage und folgt erst aus dem Fundierungsaxiom (\cref{ax:foundation}). Für $\emptyset$ braucht man dieses Axiom nicht.]}
 \end{example}
 \end{math-stroke}
 
@@ -425,7 +422,7 @@ Das Unendlichkeitsaxiom besagt einfach: Es gibt eine nicht-leere induktive Menge
 \end{spoken-clean}
 
 \begin{math-stroke}[Unendlichkeitsaxiom und Aussonderungsaxiom]
-\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 2)]
+\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 4)]
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \setcounter{enumi}{3}
     \item \textbf{Unendlichkeitsaxiom:}
@@ -459,7 +456,7 @@ Ebenso wie bei der Klassenfunktion ist $\{ z \in x \mid \varphi(z) \}$ eine bequ
 \end{explanation-of-steps}
 \end{math-stroke}
 
-\section{Das Aussonderungsaxiom und Klassenbildung (Axiom 4)}
+\section{Das Aussonderungsaxiom und Klassenbildung (Axiom 5)}
 
 \subsection{Das Aussonderungsaxiom}
 \begin{spoken-clean}[00:25:03 - 00:28:41]
@@ -546,6 +543,12 @@ Sei $\varphi(u) \equiv \forall z \, (z \in x \rightarrow u \in z)$. Für eine ni
 \bigcap x = y :\iff y = \bigl\{ u \in \bigcup x \;\big|\; \forall z \, (z \in x \rightarrow u \in z) \bigr\}
 \]
 \end{definition}
+
+\begin{explanation-of-steps}[Weshalb der Umweg über $\bigcup x$? Und was ist $\bigcap \emptyset$?]
+Die Bedingung $\forall z \, (z \in x \rightarrow u \in z)$ allein beschreibt nur eine Kollektion, keine Menge --- das Aussonderungsaxiom (\cref{ax:specification}) verlangt eine bereits existierende Obermenge, aus der ausgesondert wird. Für $x \neq \emptyset$ ist $\bigcup x$ eine solche Obermenge, denn jedes $u$, das in \emph{allen} $z \in x$ liegt, liegt insbesondere in einem davon, also in $\bigcup x$.
+
+Damit beantwortet sich auch die Frage aus dem Publikum nach $\bigcap \emptyset$: Da $\bigcup \emptyset = \emptyset$ ist, liefert die obige Definition $\bigcap \emptyset = \emptyset$. Naiv gelesen müsste $\bigcap \emptyset$ dagegen die Kollektion \emph{aller} Mengen sein (die Bedingung $z \in \emptyset \rightarrow u \in z$ ist für jedes $u$ leer erfüllt) --- und die ist nach \cref{ex:russell-paradox} keine Menge. Genau deshalb schränkt man $\bigcap$ üblicherweise auf nichtleere $x$ ein.
+\end{explanation-of-steps}
 \end{math-stroke}
 
 \begin{spoken-clean}[00:36:56 - 00:38:38]
@@ -592,7 +595,7 @@ Dann wollte ich noch ein Bild von Ernst Zermelo zeigen. Er hat eben diese Axiome
 Der Dozent korrigiert einen Tippfehler auf der Tafel: Er ersetzt ein logisches Und-Zeichen ($\land$) durch ein Implikationszeichen ($\rightarrow$) in einer der zuvor angeschriebenen Formeln.
 \end{meta-note}
 
-\section{Das Potenzmengenaxiom (Axiom 5)}
+\section{Das Potenzmengenaxiom (Axiom 6)}
 
 \subsection{Formulierung des Potenzmengenaxioms}
 \begin{spoken-clean}[00:41:37 - 00:43:31]
@@ -602,7 +605,7 @@ Das heißt, die Menge aller Teilmengen einer Menge $x$ existiert. Wir nennen die
 \end{spoken-clean}
 
 \begin{math-stroke}[Potenzmengenaxiom]
-\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 3)]
+\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 5)]
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \setcounter{enumi}{5}
     \item \textbf{Potenzmengenaxiom:}
@@ -903,7 +906,7 @@ Das erste ist das Ersetzungsaxiom. Ich werde diese Axiome jetzt nicht im Detail 
 \subsection{Das Ersetzungsaxiom (Axiom 7)}
 
 \begin{math-stroke}
-\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 4)]
+\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 6)]
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \setcounter{enumi}{6}
     \item \textbf{Ersetzungsaxiom (Axiomenschema):}
@@ -938,7 +941,7 @@ Zermelo hat seine Axiome publiziert, und acht Jahre später hat Fraenkel gesagt:
 \subsection{Das Fundierungsaxiom (Regularitätsaxiom)}
 
 \begin{math-stroke}
-\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 5)]
+\begin{axioms}[Zermelo-Fraenkel-Mengenlehre (Teil 7)]
 \begin{enumerate}[label=\textbf{(\arabic*)}]
     \setcounter{enumi}{7}
     \item \textbf{Fundierungsaxiom (Regularitätsaxiom):}

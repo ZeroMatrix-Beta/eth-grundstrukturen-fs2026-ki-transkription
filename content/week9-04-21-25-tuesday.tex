@@ -130,7 +130,7 @@ Die Gleichmächtigkeit verhält sich wie eine Äquivalenzrelation auf der Klasse
 \begin{enumerate}[label=\textbf{(\roman*)}]
     \item \textbf{Reflexivität:} $|A| = |A|$ (mittels der Identitätsabbildung $\id_A \colon A \to A$).
     \item \textbf{Symmetrie:} Falls $|A| = |B|$, so ist $|B| = |A| $ (mittels der Umkehrabbildung $f^{-1} \colon B \to A$).
-    \item \textbf{Transitivität:} Falls $|A| = |B|$ und $|B| = |C|$, so ist $|A| = |C|$ (mittels der Komposition $g \circ f \colon A \times B \to C$).
+    \item \textbf{Transitivität:} Falls $|A| = |B|$ und $|B| = |C|$, so ist $|A| = |C|$ (mittels der Komposition $g \circ f \colon A \to C$ für $f \colon A \to B$ und $g \colon B \to C$).
 \end{enumerate}
 \end{remark}
 \end{math-stroke}
@@ -820,6 +820,10 @@ Die \newterm{Kardinalität} (oder Mächtigkeit) $|M|$ einer Menge $M$ ist die kl
 |M| := \min \{ \alpha \in \Omega \mid |\alpha| = |M| \}
 \end{equation}
 \end{definition}
+
+\begin{explanation-of-steps}[Warum diese Definition nicht zirkulär ist]
+Auf den ersten Blick scheint $|M|$ hier durch sich selbst definiert zu werden. Das ist nicht der Fall: Der Ausdruck \qt{$|\alpha| = |M|$} ist nach \cref{def:gleichmaechtigkeit} \emph{keine} Gleichung zwischen zwei bereits definierten Objekten, sondern eine einzige, primitive zweistellige Relation --- nämlich \qt{es gibt eine Bijektion zwischen $\alpha$ und $M$}. Erst diese Definition erklärt das Symbol $|M|$ als eigenständiges Objekt (eine Ordinalzahl). Dass das Minimum existiert, folgt daraus, dass die Ordinalzahlen wohlgeordnet sind (\cref{thm:eigenschaften-omega} \textbf{(5)}), und dass die Menge überhaupt nicht leer ist, garantiert das Wohlordnungsprinzip.
+\end{explanation-of-steps}
 \end{math-stroke}
 
 \subsection{Eigenschaften von Kardinalzahlen}
@@ -914,7 +918,7 @@ Da $\aleph_0$ die kleinste unendliche Kardinalzahl ist, ist die nächstgrößere
 \begin{math-stroke}
 Wechselbeziehung zwischen abzählbaren und überabzählbaren Mengen:
 \[
-\omega < |\mathcal{P}(\omega)| = |\mathbb{R}| = 2^{\aleph_0} =: \mathfrak{c}
+|\omega| < |\mathcal{P}(\omega)| = |\mathbb{R}| = 2^{\aleph_0} =: \mathfrak{c}
 \]
 
 \begin{definition}[Kontinuumshypothese]\label[definition]{def:kontinuumshypothese}
@@ -928,7 +932,7 @@ Die \newterm{Kontinuumshypothese} (\textbf{CH} -- Continuum Hypothesis) besagt, 
 Die Kontinuumshypothese ist unabhängig von den Axiomen der Zermelo-Fraenkel-Mengenlehre mit Auswahlaxiom ($\text{ZFC}$):
 \begin{itemize}
     \item \textbf{Kurt Gödel (1938):} Zeigte die relative Konsistenz von $\text{ZFC} + \text{CH}$ (mittels des konstruierbaren Universums $L$). $\text{CH}$ kann in $\text{ZFC}$ nicht widerlegt werden.
-    \item \textbf{Paul Cohen (1963):} Zeigte die relative Konsistenz von $\text{ZFC} + \neg\text{CH}$ (mittels der Methode des Forcings). $\text{CH}$ kann in $\text{ZFC}$ nicht beweisen werden.
+    \item \textbf{Paul Cohen (1963):} Zeigte die relative Konsistenz von $\text{ZFC} + \neg\text{CH}$ (mittels der Methode des Forcings). $\text{CH}$ kann in $\text{ZFC}$ nicht bewiesen werden.
 \end{itemize}
 \end{explanation-of-steps}
 \end{math-stroke}

@@ -287,7 +287,7 @@ Für gerichtete Graphen gilt ein analoges Resultat (siehe Proposition 9.16 im Sk
 \begin{spoken-clean}[00:20:20 - 00:22:30]
 Kommen wir nun zu einer netten kleinen Anwendung dieses Satzes auf ein Problem aus dem Alltag: dem Dominoproblem. Ich weiß nicht, ob Sie heute noch oft Domino spielen, aber betrachten wir folgendes Szenario: Wir haben ein Dominospiel mit den Augenzahlen $0$ bis $16$ und den entsprechenden Dominosteinen.
 
-Ein Dominostein sieht bekanntlich so aus: Er hat zwei Hälften mit jeweils einer Zahl, sagen wir $m$ und $n$, die beide zwischen $0$ und $16$ liegen. Für jedes ungeordnete Paar $\{m, n\}$ gibt es genau einen Stein --- es wird also nicht zwischen $\{m, n\}$ und $\{m, n\}$ unterschieden. Die Frage ist nun: Wie viele Steine hat ein solches Dominospiel insgesamt?
+Ein Dominostein sieht bekanntlich so aus: Er hat zwei Hälften mit jeweils einer Zahl, sagen wir $m$ und $n$, die beide zwischen $0$ und $16$ liegen. Für jedes ungeordnete Paar $\{m, n\}$ gibt es genau einen Stein --- es wird also nicht zwischen $(m, n)$ und $(n, m)$ unterschieden. Die Frage ist nun: Wie viele Steine hat ein solches Dominospiel insgesamt?
 \end{spoken-clean}
 
 \begin{math-stroke}[Mathematische Formulierung des Dominoproblems]
@@ -750,7 +750,7 @@ Und der Beweis ist erfreulich einfach, das ist einfach vollständige Induktion n
 
 \begin{math-stroke}[Existenz von Gray-Codes]
 \begin{proposition}[Existenz von Gray-Codes]\label[proposition]{prop:gray-code-existenz}
-Für jedes $k \ge 1$ existiert eine zyklische Folge $(a_1, \dots, a_{2^k})$ aller $2^k$ verschiedenen binären Wörter der Länge $k$, sodass sich aufeinanderfolgende Wörter $a_{\ell}$ und $a_{\ell+1}$ (sowie das letzte Wort $a_{2^k}$ und das erste Wort $a_1$) in genau einer Stelle unterscheiden. Ein solcher Zyklus entspricht genau einem Hamilton-Kreis im Hyperwürfel $Q_k$.
+Für jedes $k \ge 1$ existiert eine zyklische Folge $(a_1, \dots, a_{2^k})$ aller $2^k$ verschiedenen binären Wörter der Länge $k$, sodass sich aufeinanderfolgende Wörter $a_{\ell}$ und $a_{\ell+1}$ (sowie das letzte Wort $a_{2^k}$ und das erste Wort $a_1$) in genau einer Stelle unterscheiden. Ein solcher Zyklus entspricht für $k \ge 2$ genau einem Hamilton-Kreis im Hyperwürfel $Q_k$ \inlinemetanote{[Anmerkung: Für $k = 1$ existiert die Folge $(0,1)$ zwar, aber $Q_1$ ist nur eine einzelne Kante und enthält gar keinen Kreis --- der zyklische Rücklauf benutzt dieselbe Kante ein zweites Mal. Die Aussage \qt{$Q_k$ ist ein Hamilton-Graph} gilt daher, wie in der Vorlesung gesagt, erst ab $k \ge 2$.]}.
 \end{proposition}
 \end{math-stroke}
 
@@ -1069,7 +1069,7 @@ c(u) \neq c(v).
 \end{theorem}
 
 \begin{explanation-of-steps}[Bedeutung der Zwei-Färbbarkeit]
-In einem bipartiten Graphen $G = (U, W, E)$ können wir allen Knoten in $U$ die Farbe Rot und allen Knoten in $W$ die Farbe Blau zuweisen. Da per Definition alle Kanten ausschließlich zwischen $U$ und $W$ verlaufen, gibt es keine Kanten zwischen gleichfarbigen Knoten. Dies zeigt die Äquivalenz zur Zwei-Färbbarkeit.
+In einem bipartiten Graphen $G = (U, W, E)$ können wir allen Knoten in $U$ die Farbe Rot und allen Knoten in $W$ die Farbe Blau zuweisen. Da per Definition alle Kanten ausschließlich zwischen $U$ und $W$ verlaufen, gibt es keine Kanten zwischen gleichfarbigen Knoten. Umgekehrt liefert jede zulässige Zwei-Färbung $c$ unmittelbar eine Bipartition, indem man $U := c^{-1}(\text{Rot})$ und $W := c^{-1}(\text{Blau})$ setzt: Diese beiden Mengen sind disjunkt, überdecken $V$, und keine Kante verläuft innerhalb einer von beiden. Zusammen ergibt das die behauptete Äquivalenz.
 \end{explanation-of-steps}
 \end{math-stroke}
 
@@ -1441,7 +1441,7 @@ Wir nehmen an, die Behauptung gilt für alle bipartiten Graphen mit $|A| \le n$.
     \[
     A' := A \setminus \{a'\}, \quad B' := B \setminus \{b'\}
     \]
-    sowie die eingeschränkte Kantenmenge $E' := E \cap (A' \times B')$. Der reduzierte Graph ist $G' = (A', B', E')$ mit $|A'| = n$.
+    sowie die eingeschränkte Kantenmenge $E' := \bigl\{ \{a, b\} \in E \;\big|\; a \in A', \, b \in B' \bigr\}$. Der reduzierte Graph ist $G' = (A', B', E')$ mit $|A'| = n$.
     \item \textbf{Verifikation der Hall-Bedingung für $G'$:} Sei $X \subseteq A'$ eine beliebige Teilmenge.
     \begin{itemize}
         \item Falls $X = \emptyset$, gilt trivialerweise $|X| = 0 \le |E'(X)|$.
@@ -1468,28 +1468,28 @@ Wir nehmen an, die Behauptung gilt für alle bipartiten Graphen mit $|A| \le n$.
         
 \textbf{Fall 2: Es existiert eine echte Teilmenge $\emptyset \neq A_1 \subsetneq A$ mit $|A_1| = |E(A_1)|$.}
 \begin{enumerate}[label=\textbf{(\arabic*)}]
-    \item \textbf{Aufteilung des Graphen:} Wir definieren $B_1 := E(A_1)$ und betrachten den Teilgraphen $G_1 = (A_1, B_1, E_1)$ mit $E_1 := E \cap (A_1 \times B_1)$. Da $|A_1| \le n$ und $G_1$ die Hall-Bedingung erbt, existiert nach Induktionsannahme eine Injektion $\pi_1 \colon A_1 \to B_1$ mit $\{a, \pi_1(a)\} \in E_1$ für alle $a \in A_1$. Da $|A_1| = |B_1|$, ist $\pi_1$ sogar eine Bijektion.
+    \item \textbf{Aufteilung des Graphen:} Wir definieren $B_1 := E(A_1)$ und betrachten den Teilgraphen $G_1 = (A_1, B_1, E_1)$ mit $E_1 := \bigl\{ \{a, b\} \in E \;\big|\; a \in A_1, \, b \in B_1 \bigr\}$. Da $|A_1| \le n$ und $G_1$ die Hall-Bedingung erbt, existiert nach Induktionsannahme eine Injektion $\pi_1 \colon A_1 \to B_1$ mit $\{a, \pi_1(a)\} \in E_1$ für alle $a \in A_1$. Da $|A_1| = |B_1|$, ist $\pi_1$ sogar eine Bijektion.
     \item \textbf{Betrachtung des Komplements:} Wir definieren die Komplementärmengen:
     \[
     A_2 := A \setminus A_1, \quad B_2 := B \setminus B_1
     \]
-    und den Graphen $G_2 = (A_2, B_2, E_2)$ mit $E_2 := E \cap (A_2 \times B_2)$.
+    und den Graphen $G_2 = (A_2, B_2, E_2)$ mit $E_2 := \bigl\{ \{a, b\} \in E \;\big|\; a \in A_2, \, b \in B_2 \bigr\}$.
     \item \textbf{Verifikation der Hall-Bedingung für $G_2$:} Sei $X \subseteq A_2$ eine beliebige Teilmenge. Wir müssen zeigen, dass $|X| \le |E_2(X)|$ gilt.
     Betrachte die Vereinigung $X \cup A_1 \subseteq A$. Da $G$ die Hall-Bedingung erfüllt, gilt:
     \[
     |X \cup A_1| \le |E(X \cup A_1)| = |E(X) \cup E(A_1)|.
     \]
-    Da $X$ und $A_1$ disjunkt sind, gilt $|X \cup A_1| = |X| + |A_1\|$. Zudem lässt sich die Nachbarschaft aufteilen in:
+    Da $X$ und $A_1$ disjunkt sind, gilt $|X \cup A_1| = |X| + |A_1|$. Zudem lässt sich die Nachbarschaft aufteilen in:
     \[
     E(X) \cup E(A_1) = E_2(X) \;\dot{\cup}\; E(A_1) = E_2(X) \;\dot{\cup}\; B_1.
     \]
     Daraus folgt für die Mächtigkeiten:
-    \begin{explanation-of-steps}[Aufteilung der Nachbarschaften]
-    Warum ist $E(X) \cup E(A_1) = E_2(X) \;\dot{\cup}\; B_1$? Die Menge $E(X)$ enthält Nachbarn von $X$, die teils in $B_1$ und teils in $B_2$ liegen. Die Nachbarn in $B_2$ bilden genau die Menge $E_2(X)$. Die Nachbarn in $B_1$ werden durch die Vereinigung mit $B_1$ absorbiert. Da $B_1$ und $B_2$ disjunkt sind, ist auch $E_2(X) \subseteq B_2$ disjunkt zu $B_1$.
-    \end{explanation-of-steps}
     \[
     |X| + |A_1| \le |E_2(X)| + |B_1|.
     \]
+    \begin{explanation-of-steps}[Aufteilung der Nachbarschaften]
+    Warum ist $E(X) \cup E(A_1) = E_2(X) \;\dot{\cup}\; B_1$? Die Menge $E(X)$ enthält Nachbarn von $X$, die teils in $B_1$ und teils in $B_2$ liegen. Die Nachbarn in $B_2$ bilden genau die Menge $E_2(X)$. Die Nachbarn in $B_1$ werden durch die Vereinigung mit $B_1$ absorbiert. Da $B_1$ und $B_2$ disjunkt sind, ist auch $E_2(X) \subseteq B_2$ disjunkt zu $B_1$.
+    \end{explanation-of-steps}
     Da nach Voraussetzung dieses Falles $|A_1| = |B_1|$ gilt, kürzen sich diese Terme weg und wir erhalten:
     \[
     |X| \le |E_2(X)|.

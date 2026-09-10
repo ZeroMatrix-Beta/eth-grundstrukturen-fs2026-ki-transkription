@@ -352,7 +352,7 @@ Um die Fibonacci-Folge zu definieren, legen wir fest: $F_0 = 0$, $F_1 = 1$, und 
 
 \begin{math-stroke}
 \begin{example}[Fibonacci-Folge via Rekursion]\label[example]{ex:fibonacci-rekursion}
-Sei $\lambda = \omega$ and $A = \omega$. Wir definieren die Fibonacci-Folge als Funktion $a \colon \omega \to \omega$ durch:
+Sei $\lambda = \omega$ und $A = \omega$. Wir definieren die Fibonacci-Folge als Funktion $a \colon \omega \to \omega$ durch:
 \begin{align*}
 F_0 &= a(0) = 0, \\
 F_1 &= a(1) = 1, \\
@@ -802,7 +802,7 @@ Wir zeigen nun, dass $U \in \mathcal{F}$ gilt. Da $\mathcal{F}$ endlichen Charak
     \item Für jedes $x_i \in E$ existiert ein Element $X_i \in \mathcal{C}$ mit $x_i \in X_i$.
     \item Da $\mathcal{C}$ eine Kette ist, ist die endliche Teilmenge $\{X_1, \dots, X_k\} \subseteq \mathcal{C}$ bezüglich Inklusion total geordnet. Es existiert somit ein maximales Element $X_{\max} \in \{X_1, \dots, X_k\}$, sodass $X_i \subseteq X_{\max}$ für alle $i \in \{1, \dots, k\}$ gilt.
     \item Daraus folgt unmittelbar $E \subseteq X_{\max}$.
-    \item Da $X_{\max} \in \mathcal{C} \subseteq \mathcal{F}$ and $\mathcal{F}$ endlichen Charakter hat, muss auch die Teilmenge $E \in \mathcal{F}$ sein.
+    \item Da $X_{\max} \in \mathcal{C} \subseteq \mathcal{F}$ und $\mathcal{F}$ endlichen Charakter hat, muss auch die Teilmenge $E \in \mathcal{F}$ sein.
 \end{itemize}
 Da jede endliche Teilmenge $E \subseteq U$ in $\mathcal{F}$ liegt, folgt $U \in \mathcal{F}$. Somit ist $U$ eine obere Schranke für die Kette $\mathcal{C}$ in $\mathcal{F}$.
 
@@ -843,11 +843,11 @@ Wir zeigen nun per Widerspruch, dass der Definitionsbereich von $f_0$ die gesamt
 \end{itemize}
 Folglich gilt $\operatorname{dom}(f_0) = \mathcal{F}$. Die maximale partielle Auswahlfunktion $f_0$ ist somit eine vollständige Auswahlfunktion für $\mathcal{F}$. Dies beweist $\text{TP} \implies \text{AC}$ und schließt den Äquivalenzkreis.
 \end{short-proof}
+\end{math-stroke}
 
 \begin{didactic-insight}[Einzelelement-Auswahl ohne AC]
 Beachten Sie hier ein feines formallogisches Detail: Im Beweis sagen wir: \qt{Wir können somit ein Element $y \in Y$ wählen.} Um ein Element aus einer \emph{einzelnen} nicht-leeren Menge $Y$ zu wählen, benötigen wir das Auswahlaxiom \emph{nicht}. Die Existenz eines solchen Elements wird bereits durch die logische Schlussregel der Existenzbeseitigung (Existential Instantiation) in Verbindung mit der Prämisse $Y \neq \emptyset$ gesichert. Das Auswahlaxiom wird nur zwingend erforderlich, wenn wir \emph{simultan} für unendlich viele Mengen eine Auswahl treffen müssen, ohne eine explizite Konstruktionsregel angeben zu können.
 \end{didactic-insight}
-\end{math-stroke}
 \end{proof}
 
 \begin{spoken-clean}[01:28:40 - 01:29:21]
