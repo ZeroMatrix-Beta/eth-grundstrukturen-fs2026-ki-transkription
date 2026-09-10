@@ -394,7 +394,7 @@ Das war keines unserer Axiome, wir müssen es also formal herleiten, wenn wir es
 Wir beginnen mit $\varphi_0$. Dafür wählen wir eine Instanziierung des Axiomenschemas $\mathbf{L_1}$ --- beziehungsweise eigentlich $\mathbf{L_2}$, wie wir gleich sehen werden. Schauen wir uns die Axiome noch einmal kurz an.
 \end{spoken-clean}
 
-\begin{meta-note}[Gastvortrag: Fachdidaktik Mathematik]
+\begin{meta-note}[Projizierter Inhalt: Die aussagenlogischen Axiome]
 Der Dozent schaltet den Projektor ein und zeigt die Folie mit den aussagenlogischen Axiomenschemata $\mathbf{L_0}$ bis $\mathbf{L_9}$ zur Referenz für den folgenden Beweis.
 \end{meta-note}
 
@@ -733,7 +733,7 @@ Jemand hat in der Pause gefragt, ob man die logischen Axiome für die Prüfung a
 \begin{spoken-clean}[01:01:12 - 01:02:27]
 Jetzt können wir das Deduktionstheorem anwenden. Es besagt: Wenn wir aus $\Phi \cup \{\psi\}$ die Formel $\varphi$ herleiten können, dann lässt sich aus $\Phi$ die Implikation $\psi \rightarrow \varphi$ beweisen. 
 
-In unserem Fall ist $\Phi = \emptyset$, $\psi \equiv x = y$ and $\varphi \equiv y = x$. Da wir gerade $\{x = y\} \vdash y = x$ bewiesen haben, liefert uns das Deduktionstheorem sofort:
+In unserem Fall ist $\Phi = \emptyset$, $\psi \equiv x = y$ und $\varphi \equiv y = x$. Da wir gerade $\{x = y\} \vdash y = x$ bewiesen haben, liefert uns das Deduktionstheorem sofort:
 \[ \vdash x = y \rightarrow y = x \]
 
 Nun wenden wir die Verallgemeinerung an. Zuerst verallgemeinern wir über die Variable $y$, was uns $\vdash \forall y (x = y \rightarrow y = x)$ gibt. Anschließend verallgemeinern wir über $x$ und erhalten schließlich:
@@ -748,7 +748,7 @@ Wir führen den Beweis der Behauptung $\{x = y\} \vdash y = x$ fort:
 \varphi_4 &\equiv x = x \rightarrow (x = y \wedge x = x) && \text{(aus \ref{eq:sym-step2} und \ref{eq:sym-step3} via $\text{MP}$)} \label{eq:sym-step4} \\
 \varphi_5 &\equiv x = y \wedge x = x && \text{(aus \ref{eq:sym-step1} und \ref{eq:sym-step4} via $\text{MP}$)} \label{eq:sym-step5} \\
 \varphi_6 &\equiv x = x \rightarrow y = x && \text{(aus \ref{eq:sym-step5} und \ref{eq:sym-step0} via $\text{MP}$)} \label{eq:sym-step6} \\
-\varphi_7 &\equiv y = x && \text{(aus \ref{eq:sym-step1} and \ref{eq:sym-step6} via $\text{MP}$)} \label{eq:sym-step7}
+\varphi_7 &\equiv y = x && \text{(aus \ref{eq:sym-step1} und \ref{eq:sym-step6} via $\text{MP}$)} \label{eq:sym-step7}
 \end{align}
 Da $\varphi_7 \equiv y = x$, ist die Sequenz ein korrekter formaler Beweis für $\{x = y\} \vdash y = x$.
 \end{math-stroke}
@@ -1025,6 +1025,10 @@ Wir führen den Beweis unter Anwendung des Deduktionstheorems ($\text{DT}$) und 
 \end{enumerate}
 Dies beweist das Theorem vollständig.
 \end{short-proof}
+
+\begin{explanation-of-steps}[Woher die Prämisse $\neg(x = 0)$ in Schritt \textbf{(5)} kommt]
+Schritt \textbf{(4)} liefert nur $\text{KT} \vdash (x \cdot y = 1 \wedge x \cdot z = 1) \rightarrow y = z$; in Schritt \textbf{(5)} taucht im Vordersatz zusätzlich $\neg(x = 0)$ auf. Dieser Zusatz ist eine reine \newterm{Abschwächung der Prämisse} und kostet einen weiteren aussagenlogischen Schritt: Aus $\mathbf{L_4}$ folgt $\bigl(\neg(x=0) \wedge \chi\bigr) \rightarrow \chi$, und mit dem Kettenschluss (Hypothetischer Syllogismus, herleitbar aus $\mathbf{L_1}$ und $\mathbf{L_2}$) ergibt sich aus $\chi \rightarrow (y = z)$ sofort $\bigl(\neg(x=0) \wedge \chi\bigr) \rightarrow (y = z)$ mit $\chi \equiv (x \cdot y = 1 \wedge x \cdot z = 1)$. Erst danach wird verallgemeinert. Die Prämisse $\neg(x = 0)$ wird also --- wie oben angemerkt --- für die Eindeutigkeit nicht gebraucht; sie steht nur deshalb im Satz, weil $\mathbf{KT_9}$ die Existenz eines Inversen ohnehin nur für $x \neq 0$ garantiert.
+\end{explanation-of-steps}
 \end{math-stroke}
 
 \begin{spoken-clean}[01:23:42 - 01:27:42]
@@ -1129,6 +1133,12 @@ Zwei Mengen sind identisch, wenn sie dieselben Elemente enthalten:
 \mathbf{Ext}\colon \quad \forall x \forall y \Bigl(\forall z (z \in x \leftrightarrow z \in y) \rightarrow x = y\Bigr) \label{eq:extensionalitaet_part3}
 \end{equation}
 \end{axiom}
+
+\begin{explanation-of-steps}[Notation: Das Symbol $\leftrightarrow$]
+Der Junktor $\leftrightarrow$ gehört \emph{nicht} zum Alphabet aus \cref{def:signatur-week2}; er ist eine übliche Abkürzung für
+\[ \varphi \leftrightarrow \psi \quad :\equiv \quad (\varphi \rightarrow \psi) \wedge (\psi \rightarrow \varphi). \]
+Ausgeschrieben lautet $\mathbf{Ext}$ also $\forall x \forall y \bigl(\forall z ((z \in x \rightarrow z \in y) \wedge (z \in y \rightarrow z \in x)) \rightarrow x = y\bigr)$.
+\end{explanation-of-steps}
 
 \begin{explanation-of-steps}[Bedeutung des Axioms]
 Das Extensionalitätsaxiom definiert die Gleichheit von Mengen. Es besagt, dass eine Menge ausschließlich über ihren Inhalt (ihre Extension) definiert ist, nicht über die Art ihrer Beschreibung. Beispielsweise sind die Mengen $\{x \in \mathbb{R} \mid x^2 = 1\}$ und $\{-1, 1\}$ identisch, da sie exakt dieselben Elemente enthalten.

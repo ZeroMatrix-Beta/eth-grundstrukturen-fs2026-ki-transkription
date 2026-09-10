@@ -384,7 +384,7 @@ Gut, das sind erst einmal die Zeichen, die wir haben. Als Nächstes wollen wir f
     \item \textbf{Logische Quantoren:} $\exists$ (Existenzquantor), $\forall$ (Allquantor)
     \item \textbf{Gleichheitsrelation:} $=$
     \item \textbf{Konstantensymbole:} z.\,B. $0, \emptyset$ (theorieabhängig).
-    \item \textbf{Funktionssymbole:} z.\,B. $+ \sin$ (mit zugehöriger Stelligkeit).
+    \item \textbf{Funktionssymbole:} z.\,B. $+$, $\sin$ (mit zugehöriger Stelligkeit).
     \item \textbf{Relationssymbole:} z.\,B. $<, \in$ (mit zugehöriger Stelligkeit).
 \end{enumerate}
 
@@ -609,7 +609,7 @@ Man muss hier ein bisschen aufpassen: Eine Variable kann in einer Formel sowohl 
 \begin{definition}[Variablen in einem Term]\label[definition]{def:variablen-in-term}
 Für einen $\mathcal{L}$-Term $\tau$ ist die Menge $\operatorname{var}(\tau)$ der in $\tau$ vorkommenden Variablen rekursiv wie folgt definiert:
 \begin{enumerate}[label=\textbf{(VT\arabic*)}, start=0]
-    \item Ist $\tau \equiv x$ eine Variable (eigentlich $\nu$, nicht $x$), so ist $\operatorname{var}(x) := \{x\}$.
+    \item Ist $\tau \equiv \nu$ eine Variable, so ist $\operatorname{var}(\nu) := \{\nu\}$.
     \item Ist $\tau \equiv c$ eine Konstante, so ist $\operatorname{var}(c) := \emptyset$.
     \item Ist $\tau \equiv F \tau_1 \dots \tau_n$, wobei $F$ ein $n$-stelliges Funktionssymbol ist, so ist:
     \[
@@ -624,7 +624,7 @@ Für einen $\mathcal{L}$-Term $\tau$ ist die Menge $\operatorname{var}(\tau)$ de
 \begin{itemize}
     \item Ein Vorkommen einer Variablen $\nu$ in einer Formel $\varphi$ heißt \newterm{gebunden}, falls es im Bereich eines Quantors $\exists \nu$ oder $\forall \nu$ (\cref{def:bereich-quantor}) liegt.
     \item Ein Vorkommen einer Variablen $\nu$ heißt \newterm{frei}, falls es nicht gebunden ist.
-    \item Wir bezeichnen mit $\operatorname{frei}(\varphi)$ die Menge aller Variablen, die in $\varphi$ mindestens ein freies Vorkommen besitzen (bezogen auf die Menge $\operatorname{var}(\tau)$ der Variablen in ihren Termen, vgl. \cref{def:variablen-in-term}). \inlinemetanote{[Anmerkung: Die Menge $\operatorname{frei}(\varphi)$ lässt sich auch präzise rekursiv definieren: $\operatorname{frei}(\tau_1 = \tau_2) := \operatorname{var}(\tau_1) \cup \operatorname{var}(\tau_2)$, $\operatorname{frei}(R \tau_1 \dots \tau_n) := \operatorname{var}(\tau_1) \cup \dots \cup \operatorname{var}(\tau_n)$, $\operatorname{frei}(\neg \varphi) := \operatorname{frei}(\varphi)$, $\operatorname{frei}(\varphi \circ \psi) := \operatorname{frei}(\varphi) \cup \operatorname{frei}(\psi)$ für $\circ \in \{\wedge, \vee, \to, \leftrightarrow\}$, und $\operatorname{frei}(\exists \nu \varphi) := \operatorname{frei}(\forall \nu \varphi) := \operatorname{frei}(\varphi) \setminus \{\nu\}$.]}
+    \item Wir bezeichnen mit $\operatorname{frei}(\varphi)$ die Menge aller Variablen, die in $\varphi$ mindestens ein freies Vorkommen besitzen (bezogen auf die Menge $\operatorname{var}(\tau)$ der Variablen in ihren Termen, vgl. \cref{def:variablen-in-term}). \inlinemetanote{[Anmerkung: Die Menge $\operatorname{frei}(\varphi)$ lässt sich auch präzise rekursiv definieren: $\operatorname{frei}(\tau_1 = \tau_2) := \operatorname{var}(\tau_1) \cup \operatorname{var}(\tau_2)$, $\operatorname{frei}(R \tau_1 \dots \tau_n) := \operatorname{var}(\tau_1) \cup \dots \cup \operatorname{var}(\tau_n)$, $\operatorname{frei}(\neg \varphi) := \operatorname{frei}(\varphi)$, $\operatorname{frei}(\varphi \circ \psi) := \operatorname{frei}(\varphi) \cup \operatorname{frei}(\psi)$ für $\circ \in \{\wedge, \vee, \to\}$, und $\operatorname{frei}(\exists \nu \varphi) := \operatorname{frei}(\forall \nu \varphi) := \operatorname{frei}(\varphi) \setminus \{\nu\}$.]}
 \end{itemize}
 \end{definition}
 \end{math-stroke}
@@ -743,7 +743,7 @@ Der Dozent zeigt eine Folie mit den Axiomenschemata $\mathbf{L_0}$ bis $\mathbf{
 \end{meta-note}
 
 \begin{math-stroke}[Die logischen Axiome (Junktoren)]
-Sei $\mathcal{L}$ eine Signatur und seien $\varphi, \varphi_1, \varphi_2, \varphi_3, \psi$ beliebige $\mathcal{L}$-Formeln:
+Sei $\mathcal{L}$ eine Signatur und seien $\varphi, \psi, \chi$ beliebige $\mathcal{L}$-Formeln:
 \begin{align}
     \mathbf{L_0}\colon &\quad \varphi \vee \neg \varphi && \text{(\textbf{Tertium non datur})} \nonumber \\
     \mathbf{L_1}\colon &\quad \varphi \rightarrow (\psi \rightarrow \varphi) \nonumber \\
@@ -785,6 +785,13 @@ In den Axiomen $\mathbf{L_9}$ und $\mathbf{L_{10}}$ wird eine informelle, aber s
     \mathbf{L_{15}}\colon &\quad \tau_1 = \tau_1' \wedge \dots \wedge \tau_n = \tau_n' \rightarrow (F\tau_1 \dots \tau_n = F\tau_1' \dots \tau_n') \nonumber
 \end{align}
 \end{math-stroke}
+
+\begin{ai-note}[{Nummerierung der logischen Axiome --- ab Woche 2 um eins verschoben --- Opus 5}]
+% [PERSISTENT]
+Die obige Liste enthält $\mathbf{L_0}$--$\mathbf{L_{15}}$. Ab \cref{ax:aussagenlogisch} (Woche 2) wird dieselbe Axiomenliste jedoch mit einem zusätzlichen aussagenlogischen Schema geführt,
+\[ \mathbf{L_9}\colon \quad \neg \varphi \rightarrow (\varphi \rightarrow \psi) \qquad \text{(\emph{ex falso quodlibet})}, \]
+wodurch sich alle nachfolgenden Nummern um eins verschieben: die Quantorenaxiome heissen dort $\mathbf{L_{10}}$--$\mathbf{L_{13}}$ (statt $\mathbf{L_9}$--$\mathbf{L_{12}}$) und die Gleichheitsaxiome $\mathbf{L_{14}}$--$\mathbf{L_{16}}$ (statt $\mathbf{L_{13}}$--$\mathbf{L_{15}}$). Insbesondere ist die Reflexivität $\tau = \tau$ hier $\mathbf{L_{13}}$, ab Woche 2 aber $\mathbf{L_{14}}$. Für alle späteren Kapitel gilt durchgehend die Zählung aus Woche 2.
+\end{ai-note}
 
 \begin{nice-box}[Summary of Key Concepts]
 In dieser Einführungsvorlesung wurden die administrativen Rahmenbedingungen geklärt und der Grundstein für die formale Logik gelegt. Die zentralen Konzepte waren:

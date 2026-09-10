@@ -205,7 +205,7 @@ Es ist immer noch mühsam genug, aber eben. In einem semi-formalen Beweis lassen
 \begin{definition}[Semi-formaler Beweis]
 Ein \newterm{semi-formaler Beweis} ist eine Beweisführung, bei der:
 \begin{itemize}
-    \item Die rein logischen Axiom-Anwendungen (wie Instanzen von \textbf{L1}--\textbf{L16}) meist unterdrückt werden.
+    \item Die rein logischen Axiom-Anwendungen (wie Instanzen von $\mathbf{L_0}$--$\mathbf{L_{16}}$) meist unterdrückt werden.
     \item Nur die theoriespezifischen Axiome (z.\,B. $\mathbf{PA_0}$--$\mathbf{PA_6}$) explizit genannt werden.
     \item Natürliche Sprache zur Strukturierung verwendet wird, wobei jeder Schritt im Prinzip auf die formalen Axiome zurückführbar bleibt.
 \end{itemize}
@@ -301,7 +301,7 @@ Damit ist der Induktionsschritt gezeigt. Nach dem Induktionsschema \eqref{eq:pa6
 \end{math-stroke}
 
 \begin{ai-note}[{Lücke im Induktionsschritt --- Sonnet 5.x / Medium}]
-Die dritte Zeile der obigen `align*`-Kette ist textidentisch mit der zweiten (kein tatsächlicher Umformungsschritt), und die Endbegründung "nach $\mathbf{PA_3}$ und $\mathbf{PA_2}$" überspringt die eigentliche Umgruppierung. Vollständig: $(x+x)+S(S(0)) = (x+S(S(0)))+x$ (Kommutativität/Assoziativität) $= S(S(x))+x$ (zweimal $\mathbf{PA_3}$ und $\mathbf{PA_2}$) $= S(x)+S(x)$ (Kommutativität und $\mathbf{PA_3}$). Das Endresultat bleibt korrekt.
+Die dritte Zeile der obigen Gleichungskette ist textidentisch mit der zweiten (kein tatsächlicher Umformungsschritt), und die Endbegründung \qt{nach $\mathbf{PA_3}$ und $\mathbf{PA_2}$} überspringt die eigentliche Umgruppierung. Vollständig: $(x+x)+S(S(0)) = (x+S(S(0)))+x$ (Kommutativität/Assoziativität) $= S(S(x))+x$ (zweimal $\mathbf{PA_3}$ und $\mathbf{PA_2}$) $= S(x)+S(x)$ (Kommutativität und $\mathbf{PA_3}$). Das Endresultat bleibt korrekt.
 \end{ai-note}
 
 \section{Modelltheorie}
