@@ -220,7 +220,7 @@ bookmarksopen=true
 }
 
 \usepackage{tcolorbox}
-\tcbuselibrary{skins, breakable, theorems}
+\tcbuselibrary{skins, breakable, theorems, hooks} % hooks: before title app
 
 % --- DYNAMIC PROOF STYLING ENGINE ---
 \newif\ifinsideproof
@@ -248,6 +248,8 @@ bookmarksopen=true
   every box/.append style={
     before skip=10pt plus 3pt minus 2pt, 
     after skip=10pt plus 3pt minus 2pt,  
+    % \textbf in a box title takes the title's color: blue bold on a red title bar is unreadable
+    before title app={\colorlet{TextBoldColor}{.}},
     underlay first={
       \fill[white] ([xshift=-15pt,yshift=0pt]frame.south west) rectangle ([xshift=15pt,yshift=-15pt]frame.south east);
     },
@@ -710,7 +712,9 @@ code={
 },
 IfValueTF={#2}{
   title={\faBox\ \ #2},
-  attach boxed title to top left={xshift=10pt, yshift=-10pt}
+  attach boxed title to top left={xshift=10pt, yshift=-10pt},
+  % the attached title reaches 10pt into the box: keep the first line clear of it (as overview)
+  top=14pt
 }{
   notitle
 }
