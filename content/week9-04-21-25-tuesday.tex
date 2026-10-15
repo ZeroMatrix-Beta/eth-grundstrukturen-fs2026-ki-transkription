@@ -555,7 +555,7 @@ h(x) := \begin{cases}
   \draw[->, colG, thick] (10.2, 1.8) -- node[below, pos=0.25] {$\textcolor{BurntOrange}{g}$} (3.8, 1.8);
 
   % Legende
-  \node[align=left, anchor=north west] at (0, -0.5) {
+  \node[align=left, anchor=north west, text width=0.9\linewidth] at (0, -0.5) {
     \textbf{Konstruktion der Bijektion $h$:}\\
     \tikz[baseline=-0.5ex] \filldraw[fill=fillE, draw=colE, thick] (0,0) rectangle (0.3,0.3); Menge $\textcolor{Fuchsia}{E}$ (lila/pink): Hier wirkt $h = \textcolor{RoyalBlue}{f}$ (Pfeile nach rechts).\\
     \tikz[baseline=-0.5ex] \filldraw[fill=fillA, draw=colA, thick] (0,0) rectangle (0.3,0.3); Menge $\textcolor{ForestGreen}{A} \setminus \textcolor{Fuchsia}{E}$ (grün): Hier wirkt $h = \textcolor{BurntOrange}{g}^{-1}$ (Pfeile nach links umgekehrt). \inlinemetanote{[Anmerkung: Die im Diagramm ebenfalls eingezeichnete duale Kette $g(B \setminus f(A))$ etc. dient rein der vollständigen Visualisierung und wird im Beweis nicht explizit benötigt.]}

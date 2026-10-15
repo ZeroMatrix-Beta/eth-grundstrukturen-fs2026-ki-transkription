@@ -497,7 +497,8 @@ Da $\varphi_4 \equiv \varphi \rightarrow \varphi$, ist die Sequenz ein korrekter
 \begin{ai-note}[{Fehlerhafte $L_2$-Instanziierung in $\varphi_0$ --- Sonnet 5.x / Medium}]
 Die obige Instanziierung von $\mathbf{L_2}$ ($(\psi\rightarrow(\varphi_1\rightarrow\varphi_2))\rightarrow((\psi\rightarrow\varphi_1)\rightarrow(\psi\rightarrow\varphi_2))$ mit $\psi\equiv\varphi,\ \varphi_1\equiv\varphi\to\varphi,\ \varphi_2\equiv\varphi$) liefert korrekt eingesetzt den Antezedens $\varphi\to((\varphi\to\varphi)\to\varphi)$, nicht das oben gezeigte $\varphi\to(\varphi\to\varphi)$ --- eine Verschachtelungsebene fehlt. Korrekt wäre:
 \begin{align*}
-\varphi_0 &\equiv \bigl(\varphi \rightarrow ((\varphi \rightarrow \varphi) \rightarrow \varphi)\bigr) \rightarrow \Bigl(\bigl(\varphi \rightarrow (\varphi \rightarrow \varphi)\bigr) \rightarrow (\varphi \rightarrow \varphi)\Bigr) \\
+\varphi_0 &\equiv \bigl(\varphi \rightarrow ((\varphi \rightarrow \varphi) \rightarrow \varphi)\bigr) \\
+&\qquad \rightarrow \Bigl(\bigl(\varphi \rightarrow (\varphi \rightarrow \varphi)\bigr) \rightarrow (\varphi \rightarrow \varphi)\Bigr) \\
 \varphi_1 &\equiv \varphi \rightarrow \bigl((\varphi \rightarrow \varphi) \rightarrow \varphi\bigr) && \text{(Instanziierung von $\mathbf{L_1}$ mit $\psi\equiv\varphi\to\varphi$)} \\
 \varphi_2 &\equiv \bigl(\varphi \rightarrow (\varphi \rightarrow \varphi)\bigr) \rightarrow \bigl(\varphi \rightarrow \varphi\bigr) && \text{(aus $\varphi_0,\varphi_1$ via MP)}
 \end{align*}

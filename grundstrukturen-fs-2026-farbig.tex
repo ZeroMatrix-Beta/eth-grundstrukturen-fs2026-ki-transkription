@@ -206,7 +206,14 @@
 \DeclareTextFontCommand{\emph}{\sffamily\bfseries\color{TextEmphColor}}
 \DeclareTextFontCommand{\textbf}{\sffamily\bfseries\color{TextBoldColor}} 
 
-\usepackage[margin=1in, headheight=40pt]{geometry} % Headheight leicht erhöht für mehrzeilige Header
+\usepackage[
+  top=24mm,
+  bottom=26mm,
+  hmargin=1in,
+  headheight=14pt,  % one-line running heads (see HEADER, FOOTER below)
+  headsep=7mm,
+  footskip=11mm
+]{geometry}
 
 \definecolor{DarkSlateGray}{HTML}{2F4F4F}
 \definecolor{bglight}{HTML}{F8F9FA}
@@ -358,36 +365,52 @@ bookmarksopen=true
 % HEADER, FOOTER & COMMANDS
 % ==========================================
 \usepackage{fancyhdr}
-\usepackage{extramarks}
 \usepackage{lastpage}
+\usepackage[fit]{truncate}
 \pagestyle{fancy}
 \fancyhf{}
 
-% FIX: \parbox[b] sorgt dafür, dass sich mehrzeilige Header nach oben ausdehnen 
-% und immer perfekt bündig mit der Seitenzahl auf der Linie aufliegen.
-\fancyhead[L]{\parbox[b]{0.8\textwidth}{\sloppy\raggedright\small\sffamily\color{HeaderFooterFaint}\leftmark}}
-\fancyhead[R]{\parbox[b]{0.18\textwidth}{\sloppy\raggedleft\small\sffamily\color{HeaderFooterFaint}\textbf{\thepage} / \pageref*{LastPage}}}
+% Running heads, one line each: the header carries the section (left) and week, date and page
+% (right); the footer the subsection (left) and subsubsection (right). Each heading level has its
+% own mark class, and \LastMark gives the one in force at the bottom of the page. A title too long
+% for its slot is cut at a word and ends in "...", so a head never wraps to a second line. Without
+% a subsubsection the subsection gets the whole footer.
+\NewMarkClass{gs-sec}
+\NewMarkClass{gs-subsec}
+\NewMarkClass{gs-subsubsec}
+\newcommand{\headfont}{\footnotesize\sffamily\color{HeaderFooterFaint}}
+\newcommand{\pagecounter}{\textbf{\thepage} / \pageref*{LastPage}}
 
-\fancyfoot[L]{\parbox[t]{0.47\textwidth}{\sloppy\raggedright\small\sffamily\color{HeaderFooterFaint}\rightmark}}
-\fancyfoot[R]{\parbox[t]{0.47\textwidth}{\sloppy\raggedleft\small\sffamily\color{HeaderFooterFaint}\lastxmark}}
+\fancyhead[L]{\headfont\truncate{0.6\headwidth}{\LastMark{gs-sec}}}
+\fancyhead[R]{\headfont\leftmark\quad\pagecounter}
 
-\renewcommand{\headrule}{\hbox to\headwidth{\color{HeaderFooterLine}\leaders\hrule height 0.5pt\hfill}}
+\fancyfoot[L]{\headfont\sbox0{\LastMark{gs-subsubsec}}%
+  \truncate{\ifdim\wd0=0pt \headwidth\else 0.49\headwidth\fi}{\LastMark{gs-subsec}}}
+\fancyfoot[R]{\headfont\truncate{0.49\headwidth}{\LastMark{gs-subsubsec}}}
+
+% A plain \hrule, not an \hbox: a box in the head's vbox gets a full \baselineskip above it,
+% which pushes the line out of a one-line head (it vanishes, and the head becomes 21pt tall).
+\renewcommand{\headrule}{\vskip3pt{\color{HeaderFooterLine}\hrule height 0.5pt width \headwidth}\vskip-3.5pt}
 \renewcommand{\footrule}{\hbox to\headwidth{\color{HeaderFooterLine}\leaders\hrule height 0.5pt\hfill}}
 
 \fancypagestyle{plain}{%
   \fancyhf{}%
-  \fancyfoot[C]{\small\sffamily\color{HeaderFooterFaint}\textbf{\thepage} / \pageref*{LastPage}}%
+  \fancyfoot[C]{\headfont\pagecounter}%
   \renewcommand{\headrule}{}%
   \renewcommand{\footrule}{}%
 }
 
+% A new heading clears the levels below it, so a page never shows a subsection of the last section.
 \renewcommand{\chaptermark}[1]{}
 \renewcommand{\sectionmark}[1]{%
-\markright{\thesection.\ #1}%
-\extramarks{}{}%
+  \InsertMark{gs-sec}{\thesection.\ #1}%
+  \InsertMark{gs-subsec}{}\InsertMark{gs-subsubsec}{}%
 }
 \renewcommand{\subsectionmark}[1]{%
-\extramarks{\thesubsection.\ #1}{\thesubsection.\ #1}%
+  \InsertMark{gs-subsec}{\thesubsection.\ #1}\InsertMark{gs-subsubsec}{}%
+}
+\renewcommand{\subsubsectionmark}[1]{%
+  \InsertMark{gs-subsubsec}{\thesubsubsection.\ #1}%
 }
 
 % Fail-Safe TikZ Configuration
@@ -405,12 +428,23 @@ bookmarksopen=true
 \usepackage{circuitikz}          % circuit diagrams (engineering, physics)
 \usepackage{titlesec}
 \usepackage{titletoc}
+\usepackage{needspace}  % keeps a week's TOC heading with its first entries
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
 % --- TABLE OF CONTENTS TYPOGRAPHY & COLORS ---
 \contentsmargin{2.0em}
+% The blue TOC of the earlier book (grundstrukturen-ai-transcription-spring-2025): purple week
+% label, blue lecture titles, bright blue sections, brown subsections, gray subsubsections.
+\definecolor{TocEntryBlue}{HTML}{008CC8}
+\definecolor{TocEntryBrown}{HTML}{A8651E}
+\colorlet{TocPartColor}{ThemePrimary!90!black}
+\colorlet{TocChapColor}{ThemeSecondary!90!black}
+\colorlet{TocSecColor}{TocEntryBlue}
+\colorlet{TocSubsecColor}{TocEntryBrown}
+\colorlet{TocSubsubColor}{gray}
+\colorlet{TocLabelColor}{ThemePrimary!85!black}
 \colorlet{TocProofColor}{ProofTint} % titled proofWrapper entries, in the color of the proof heading
 
 % Left indent of a TOC entry at depth n (1 section, 2 subsection, 3 subsubsection). Depths 4 and
@@ -446,32 +480,32 @@ bookmarksopen=true
   \def\cref{\proofwrapper@cref*}\def\Cref{\proofwrapper@Cref*}#1}}
 
 \titlecontents{chapter}[0em]
-  {\addvspace{16pt}\sffamily\bfseries\large\color{ThemePrimary!95!black}}
-  {\color{ThemeWeekNumber}\MakeUppercase{\chaptername}\ \thecontentslabel\hspace{0.8em}}
+  {\needspace{5\baselineskip}\addvspace{16pt}\hypersetup{linkcolor=TocChapColor}\sffamily\bfseries\large\color{TocChapColor}}
+  {\color{TocPartColor}\MakeUppercase{\chaptername}\ \thecontentslabel\hspace{0.8em}\color{TocChapColor}}
   {}
   {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{ThemeWeekNumber}\contentspage}
 
 \titlecontents{section}[\tocindent{1}]
-  {\addvspace{5pt}\proofwrapper@tocinner{1}\sffamily\bfseries\color{HeadingSlate}}
-  {\color{ThemePrimary!85!black}\thecontentslabel\hspace{0.8em}\color{HeadingSlate}}
+  {\addvspace{5pt}\proofwrapper@tocinner{1}\hypersetup{linkcolor=TocSecColor}\sffamily\color{TocSecColor}}
+  {\color{TocLabelColor}\thecontentslabel\hspace{0.8em}\color{TocSecColor}}
   {}
-  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{HeadingSlate}\contentspage}
+  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocSecColor}\contentspage}
 
 \titlecontents{subsection}[\tocindent{2}]
-  {\addvspace{2.5pt}\proofwrapper@tocinner{2}\sffamily\color{HeadingBrown}}
-  {\color{HeadingBrown}\thecontentslabel\hspace{0.8em}\color{HeadingBrown}}
+  {\addvspace{2.5pt}\proofwrapper@tocinner{2}\hypersetup{linkcolor=TocSubsecColor}\sffamily\small\color{TocSubsecColor}}
+  {\color{TocSubsecColor}\thecontentslabel\hspace{0.8em}\color{TocSubsecColor}}
   {}
-  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{HeadingBrown}\contentspage}
+  {\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocSubsecColor}\contentspage}
 
 \titlecontents{subsubsection}[\tocindent{3}]
-  {\addvspace{1.5pt}\proofwrapper@tocinner{3}\sffamily\small\bfseries\color{gray}}
-  {\color{gray}\thecontentslabel\hspace{0.8em}\color{gray}}
+  {\addvspace{1.5pt}\proofwrapper@tocinner{3}\hypersetup{linkcolor=TocSubsubColor}\sffamily\small\color{TocSubsubColor}}
+  {\color{TocSubsubColor}\thecontentslabel\hspace{0.8em}\color{TocSubsubColor}}
   {}
-  {\normalfont\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{gray}\contentspage}
+  {\normalfont\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocSubsubColor}\contentspage}
 
 % Titled proofWrapper: pen nib in place of a number, one level below the heading it sits under
 \titlecontents{proofwrapper}[0pt]
-  {\addvspace{1.5pt}\setlength\leftskip{\tocindent{\proofwrapper@tocparent+1}}\sffamily\small\color{TocProofColor}}
+  {\addvspace{1.5pt}\setlength\leftskip{\tocindent{\proofwrapper@tocparent+1}}\hypersetup{linkcolor=TocProofColor}\sffamily\small\color{TocProofColor}}
   {}
   {\faPenNib\hspace{0.6em}\itshape}
   {\normalfont\sffamily\color{HeaderFooterLine}\titlerule*[0.6pc]{.}\color{TocProofColor}\contentspage}
@@ -1086,7 +1120,7 @@ breakable
       \setcounter{chapter}{\numexpr#1-1\relax}%
     }%
   }%
-  \chapter[\texorpdfstring{--- \color{ThemePrimary!95!black}#5}{--- #5}]{{\Large\color{ChapSubtitleText}#2 #4} \texorpdfstring{\\[1ex]}{--- } {\LARGE #5}}%
+  \chapter[\texorpdfstring{--- \color{TocChapColor}#5}{--- #5}]{{\Large\color{ChapSubtitleText}#2 #4} \texorpdfstring{\\[1ex]}{--- } {\LARGE #5}}%
   \ifrestorelecturesubcounters
     \setcounter{section}{\TempSec}%
     \setcounter{theorem}{\TempThm}%
@@ -1094,7 +1128,8 @@ breakable
     \setcounter{figure}{\TempFig}%
     \setcounter{table}{\TempTab}%
   \fi
-  \markboth{\chaptername\ \thechapter\ \ ---\ \ #2 #4\ \ ---\ \ #5}{}%
+  \markboth{\chaptername\ \thechapter\ \ ·\ \ #2, #3}{}% the title itself is on the chapter page
+  \InsertMark{gs-sec}{}\InsertMark{gs-subsec}{}\InsertMark{gs-subsubsec}{}%
 }
 
 \titlespacing*{\chapter}{0pt}{-20pt}{40pt}
@@ -1192,6 +1227,7 @@ breakable
 % ==========================================
 % TITELSEITE
 % ==========================================
+\hypersetup{pageanchor=false} % the title page and the first TOC page would both be anchor page.1
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture, overlay]
@@ -1237,6 +1273,7 @@ breakable
 \end{minipage}
 \vspace*{0.5cm}
 \end{titlepage}
+\hypersetup{pageanchor=true}
 
 % ==========================================
 % INHALTSVERZEICHNIS
