@@ -544,7 +544,8 @@ bookmarksopen=true
 
 % Custom text commands & transcript anchors
 \newcommand{\newterm}[1]{\textcolor{QuoteRed}{\glqq}\textcolor{TextBoldColor}{\textit{#1}}\textcolor{QuoteRed}{\grqq}}
-\newcommand{\inlinemetanote}[1]{{\colorlet{QuoteRed}{TextMetaNote}\textit{\textcolor{TextMetaNote}{[#1]}}}} % quote marks and brackets grey too
+\newcommand{\inlinemetanote}[1]{\textcolor{TextMetaNote}{\colorlet{QuoteRed}{TextMetaNote}\footnotesize\textit{[#1]}}} % quote marks and brackets grey too
+\let\inlinematenote\inlinemetanote
 % Recap line: a definition or result from an earlier lecture (or from earlier in this one) that the
 % lecturer states again. A transcript uses it for a recap the lecturer only speaks (anything written
 % goes into `content`); a review also puts one before a restatement on the board, citing the first.
@@ -609,10 +610,12 @@ bookmarksopen=true
 
 \theoremstyle{remarkthm}
 \newtheorem{remark}[theorem]{Bemerkung}
+\newtheorem{observation}[theorem]{Beobachtung}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{summary}[theorem]{Zusammenfassung}
 \newtheorem{goals}[theorem]{Ziele}
 \newtheorem*{remark*}{Bemerkung}
+\newtheorem*{observation*}{Beobachtung}
 \newtheorem*{notation*}{Notation}
 \newtheorem*{summary*}{Zusammenfassung}
 \newtheorem*{goals*}{Ziele}
@@ -663,6 +666,8 @@ bookmarksopen=true
 \Crefname{fact}{Fakt}{Fakten}
 \crefname{remark}{Bemerkung}{Bemerkungen}
 \Crefname{remark}{Bemerkung}{Bemerkungen}
+\crefname{observation}{Beobachtung}{Beobachtungen}
+\Crefname{observation}{Beobachtung}{Beobachtungen}
 \crefname{notation}{Notation}{Notationen}
 \Crefname{notation}{Notation}{Notationen}
 \crefname{summary}{Zusammenfassung}{Zusammenfassungen}
@@ -686,7 +691,7 @@ bookmarksopen=true
 % Shown faintly after the timestamp; without \setSpeaker nothing is shown.
 \providecommand{\lecturespeaker}{}
 \providecommand{\setSpeaker}[1]{\renewcommand{\lecturespeaker}{#1}}
-\providecommand{\speakertag}{\ifdefempty{\lecturespeaker}{}{\quad{\mdseries\footnotesize\color{black!45}\faUser\ \lecturespeaker}}}
+\providecommand{\speakertag}{\ifdefempty{\lecturespeaker}{}{\quad{\mdseries\footnotesize\color{black!45}\faUser\ \ \lecturespeaker}}}
 
 % 1. Clean Spoken Protocol
 \newtcolorbox{speech}[1][]{
